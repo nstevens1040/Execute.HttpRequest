@@ -17,7 +17,7 @@ namespace JustAnExample
     {
         public RetObject Request(CookieCollection cookies, OrderedDictionary headers)
         {
-            RetObject response = Create.Send(
+            RetObject response = HttpRequest.Send(
                 "https://fakedomain.com/post",
                 headers,
                 HttpMethod.Post,
