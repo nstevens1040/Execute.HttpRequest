@@ -1,0 +1,8 @@
+version: 1.0.{build}
+nuget:
+  account_feed: true
+  project_feed: true
+build:
+  publish_nuget: true
+  include_nuget_references: true
+  verbosity: normal
