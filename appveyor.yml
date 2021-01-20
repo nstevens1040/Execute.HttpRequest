@@ -14,9 +14,9 @@ build:
 #  symbol_server:           # remove to push symbols to SymbolSource.org
 #  artifact: /.*(\.|\.s)nupkg/
 deploy:
-  provider: https://ci.appveyor.com/nuget/nstevens1040-4xogb2mbmd3w
+  provider: https://ci.appveyor.com/nuget/execute-httprequest-tcrs65r3r7uh
   api_key:
-    secure: lfzAcLvVbla6sLXSYBBtRoLkVXSC65DHO7s9xQi/kS0=
+    secure: FodyM5fyWKh4OyrkaIMa93LYWXXlg8Zy7zZbWaQmh5s=
   skip_symbols: true
   symbol_server:           # remove to push symbols to SymbolSource.org
   artifact: /.*(\.|\.s)nupkg/
