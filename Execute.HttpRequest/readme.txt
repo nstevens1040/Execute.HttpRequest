@@ -33,8 +33,8 @@ namespace JustAnExample
         {
             RetObject response = HttpRequest.Send(
                 "https://fakedomain.com/post",
-                headers,
                 HttpMethod.Post,
+                headers,
                 cookies,
                 "application/x-www-form-urlencoded",
                 "data=that&i%27m=sending&via=httpost"
@@ -66,8 +66,8 @@ Either way, once the command completes, you can use the library in PowerShell li
 
 $re = [Execute.HttpRequest]::Send(
     "https://fakedomain.com/post",
-    ([ordered]@{"x-csrf-token"="blahblahblahfaketokenblahblah"}),
     [System.Net.Http.HttpMethod]::Post,
+    ([ordered]@{"x-csrf-token"="blahblahblahfaketokenblahblah"}),
     $cookies, # CookieContainer example below
     "application/x-www-form-urlencoded",
     "data=that&i%27m=sending&via=httpost"
@@ -161,16 +161,16 @@ To illustrate:
 
 $re = [Execute.HttpRequest]::Send(
     "https://fakedomain.com/post",
-    ([ordered]@{"x-csrf-token"="blahblahblahfaketokenblahblah"}),
     [System.Net.Http.HttpMethod]::Post,
+    ([ordered]@{"x-csrf-token"="blahblahblahfaketokenblahblah"}),
     $cookies,
     "application/x-www-form-urlencoded",
     "data=that&i%27m=sending&via=httpost"
 )
 $next = [Execute.HttpRequest]::Send(
     "https://fakedomain.com/someotherresource",
-    $re.HttpResponseHeaders,
     [System.Net.Http.HttpMethod]::Get,
+    $re.HttpResponseHeaders,
     $re.CookieCollection
 )
 
