@@ -13,7 +13,7 @@
     <releaseNotes>First release</releaseNotes>
     <copyright>Copyright © nstevens1040 2021</copyright>
     <tags>http-request http-response http https http-client dotnet-framework class-library csharp http-get http-post http-put http-delete http-trace cookies</tags>
-    <repository type="git" url="https://github.com/nstevens1040/execute.httprequest" commit="fd95ea1a995326a962a03377098f10a0712632b7" />
+    <repository type="git" url="https://github.com/nstevens1040/execute.httprequest" commit="f25ddaae8f43d6a2a86996c1145d17f37652ff4c" />
   </metadata>
   <files>
     <file src="readme.txt" target="" />
