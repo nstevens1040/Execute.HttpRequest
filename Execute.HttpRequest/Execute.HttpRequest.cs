@@ -228,7 +228,7 @@ namespace Execute
             }
             return cooks;
         }
-        private static async Task<RetObject> SendHttp(string uri, OrderedDictionary headers = null, HttpMethod method = null, CookieCollection cookies = null, string contentType = null, string body = null)
+        private static async Task<RetObject> SendHttp(string uri, HttpMethod method = null, OrderedDictionary headers = null, CookieCollection cookies = null, string contentType = null, string body = null)
         {
             RetObject retObj = new RetObject();
             HttpResponseMessage res;
@@ -353,8 +353,6 @@ namespace Execute
                     });
                     responseCookies = handle.CookieContainer.GetCookies(new Uri(uri));
                     rCookies = SetCookieParser(setCookieValue, responseCookies, cookies);
-                    dom = DOMParser(htmlString);
-                    retObj.HtmlDocument = dom;
                     retObj.HttpResponseHeaders = httpResponseHeaders;
                     retObj.HttpResponseMessage = res;
                     break;
@@ -524,9 +522,9 @@ namespace Execute
             retObj.CookieCollection = rCookies;
             return retObj;
         }
-        public static RetObject Send(string uri, OrderedDictionary headers = null, HttpMethod method = null, CookieCollection cookies = null, string contentType = null, string body = null)
+        public static RetObject Send(string uri, HttpMethod method = null, OrderedDictionary headers = null, CookieCollection cookies = null, string contentType = null, string body = null)
         {
-            Task<RetObject> r = SendHttp(uri, headers, method, cookies, contentType, body);
+            Task<RetObject> r = SendHttp(uri, method, headers, cookies, contentType, body);
             return r.Result;
         }
     }
