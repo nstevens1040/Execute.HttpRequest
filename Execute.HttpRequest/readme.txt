@@ -89,25 +89,25 @@ Positional parameters:
   
 string uri = @"https://twitter.com/sessions";
 
+| Method         |                                                     |
+|----------------|-----------------------------------------------------|
+| **Type**       |   System.Net.Http.HttpMethod                        |
+| **Position**   |   1                                                 |
+| **Purpose**    |   The HTTP method you're using to send the request. Must be one of **GET, POST, PUT, DELETE, TRACE, OPTIONS, or HEAD**. |
+| **Required?**  |   No (**Defaults to GET** if not specified)         |  
+
+HttpMethod method = HttpMethod.Post;
+
 | Headers        |                                                     |
 |----------------|-----------------------------------------------------|
 | **Type**       |   System.Collections.Specialized.OrderedDictionary  |
-| **Position**   |   1                                                 |
+| **Position**   |   2                                                 |
 | **Purpose**    |   Http headers (**not Content-\***) to send along with the HTTP request. |
 | **Required?**  |   No (**HTTP headers Path, User-Agent, and Content-Length are sent automatically**)       |  
 
 OrderedDictionary headers = new OrderedDictionary();
 headers.Add("x-csrf-token","blahblahblahfaketokenblahblah");
  
-| Method         |                                                     |
-|----------------|-----------------------------------------------------|
-| **Type**       |   System.Net.Http.HttpMethod                        |
-| **Position**   |   2                                                 |
-| **Purpose**    |   The HTTP method you're using to send the request. Must be one of **GET, POST, PUT, DELETE, TRACE, OPTIONS, or HEAD**. |
-| **Required?**  |   No (**Defaults to GET** if not specified)         |  
-
-HttpMethod method = HttpMethod.Post;
-
 | Cookies        |                                                     |
 |----------------|-----------------------------------------------------|
 | **Type**       |   System.Net.CookieCollection                       |
