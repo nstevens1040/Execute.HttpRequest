@@ -260,6 +260,11 @@ namespace Execute
                 client.DefaultRequestHeaders.Remove("Path");
             }
             client.DefaultRequestHeaders.Add("Path", (new Uri(uri).PathAndQuery));
+            List<string> headersToSkip = new List<string>();
+            headersToSkip.Add("Content-Length");
+            headersToSkip.Add("Content-Type");
+            headersToSkip.Add("Expires");
+            headersToSkip.Add("Last-Modified");
             if (headers != null)
             {
                 IEnumerator enume = headers.Keys.GetEnumerator();
@@ -267,11 +272,14 @@ namespace Execute
                 {
                     string key = enume.Current.ToString();
                     string value = headers[enume.Current.ToString()].ToString();
-                    if (client.DefaultRequestHeaders.Contains(key))
+                    if (client.DefaultRequestHeaders.Contains(key) && headersToSkip.Contains(key))
                     {
                         client.DefaultRequestHeaders.Remove(key);
                     }
-                    client.DefaultRequestHeaders.Add(key, value);
+                    if (!headersToSkip.Contains(key))
+                    {
+                        client.DefaultRequestHeaders.Add(key, value);
+                    }
                 }
             }
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("*/*"));
