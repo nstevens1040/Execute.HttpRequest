@@ -9,6 +9,8 @@ using System.Net.Http.Headers;
 using System.Net;
 using System.Collections;
 using System.Text.RegularExpressions;
+using System.IO;
+using System.IO.Compression;
 
 namespace Execute
 {
@@ -228,8 +230,31 @@ namespace Execute
             }
             return cooks;
         }
+        public static void CopyTo(Stream src, Stream dest)
+        {
+            byte[] bytes = new byte[4096];
+            int cnt;
+            while ((cnt = src.Read(bytes, 0, bytes.Length)) != 0)
+            {
+                dest.Write(bytes, 0, cnt);
+            }
+        }
+        public static string Unzip(byte[] bytes)
+        {
+            using (var msi = new MemoryStream(bytes))
+            using (var mso = new MemoryStream())
+            {
+                using (var gs = new GZipStream(msi, CompressionMode.Decompress))
+                {
+                    //gs.CopyTo(mso);
+                    CopyTo(gs, mso);
+                }
+                return Encoding.UTF8.GetString(mso.ToArray());
+            }
+        }
         private static async Task<RetObject> SendHttp(string uri, HttpMethod method = null, OrderedDictionary headers = null, CookieCollection cookies = null, string contentType = null, string body = null)
         {
+            byte[] reStream;
             RetObject retObj = new RetObject();
             HttpResponseMessage res;
             OrderedDictionary httpResponseHeaders = new OrderedDictionary();
@@ -261,6 +286,7 @@ namespace Execute
             }
             client.DefaultRequestHeaders.Add("Path", (new Uri(uri).PathAndQuery));
             List<string> headersToSkip = new List<string>();
+            headersToSkip.Add("Accept");
             headersToSkip.Add("pragma");
             headersToSkip.Add("Cache-Control");
             headersToSkip.Add("Date");
@@ -277,7 +303,7 @@ namespace Execute
                 while (enume.MoveNext())
                 {
                     string key = enume.Current.ToString();
-                    string value = headers[key].ToString();
+                    string value = String.Join("\n", headers[key]);
                     if (client.DefaultRequestHeaders.Contains(key))
                     {
                         client.DefaultRequestHeaders.Remove(key);
@@ -292,7 +318,7 @@ namespace Execute
                     }
                 }
             }
-            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("*/*"));
+            //client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("*/*"));
             if (cookies != null)
             {
                 IEnumerator cnume = cookies.GetEnumerator();
@@ -307,7 +333,15 @@ namespace Execute
             {
                 case "DELETE":
                     res = await client.SendAsync((new HttpRequestMessage(method, uri)));
-                    htmlString = await res.Content.ReadAsStringAsync();
+                    if (res.Content.Headers.ContentEncoding.ToString().ToLower().Equals("gzip"))
+                    {
+                        reStream = res.Content.ReadAsByteArrayAsync().Result;
+                        htmlString = Unzip(reStream);
+                    }
+                    else
+                    {
+                        htmlString = res.Content.ReadAsStringAsync().Result;
+                    }
                     try
                     {
                         setCookieValue = res.Headers.GetValues("Set-Cookie").ToList();
@@ -331,7 +365,14 @@ namespace Execute
                     break;
                 case "GET":
                     res = await client.SendAsync((new HttpRequestMessage(method, uri)));
-                    htmlString = await res.Content.ReadAsStringAsync();
+                    if (res.Content.Headers.ContentEncoding.ToString().ToLower().Equals("gzip"))
+                    {
+                        reStream = res.Content.ReadAsByteArrayAsync().Result;
+                        htmlString = Unzip(reStream);
+                    } else
+                    {
+                        htmlString = res.Content.ReadAsStringAsync().Result;
+                    }
                     try
                     {
                         setCookieValue = res.Headers.GetValues("Set-Cookie").ToList();
@@ -376,7 +417,15 @@ namespace Execute
                     break;
                 case "OPTIONS":
                     res = await client.SendAsync((new HttpRequestMessage(method, uri)));
-                    htmlString = await res.Content.ReadAsStringAsync();
+                    if (res.Content.Headers.ContentEncoding.ToString().ToLower().Equals("gzip"))
+                    {
+                        reStream = res.Content.ReadAsByteArrayAsync().Result;
+                        htmlString = Unzip(reStream);
+                    }
+                    else
+                    {
+                        htmlString = res.Content.ReadAsStringAsync().Result;
+                    }
                     try
                     {
                         setCookieValue = res.Headers.GetValues("Set-Cookie").ToList();
@@ -411,7 +460,15 @@ namespace Execute
                                 Content = (new StringContent(body, Encoding.UTF8, contentType))
                             })
                         );
-                        htmlString = await res.Content.ReadAsStringAsync();
+                        if (res.Content.Headers.ContentEncoding.ToString().ToLower().Equals("gzip"))
+                        {
+                            reStream = res.Content.ReadAsByteArrayAsync().Result;
+                            htmlString = Unzip(reStream);
+                        }
+                        else
+                        {
+                            htmlString = res.Content.ReadAsStringAsync().Result;
+                        }
                         try
                         {
                             setCookieValue = res.Headers.GetValues("Set-Cookie").ToList();
@@ -430,7 +487,15 @@ namespace Execute
                     else
                     {
                         res = await client.SendAsync((new HttpRequestMessage(method, uri)));
-                        htmlString = await res.Content.ReadAsStringAsync();
+                        if (res.Content.Headers.ContentEncoding.ToString().ToLower().Equals("gzip"))
+                        {
+                            reStream = res.Content.ReadAsByteArrayAsync().Result;
+                            htmlString = Unzip(reStream);
+                        }
+                        else
+                        {
+                            htmlString = res.Content.ReadAsStringAsync().Result;
+                        }
                         try
                         {
                             setCookieValue = res.Headers.GetValues("Set-Cookie").ToList();
@@ -466,7 +531,15 @@ namespace Execute
                                 Content = (new StringContent(body, Encoding.UTF8, contentType))
                             })
                         );
-                        htmlString = await res.Content.ReadAsStringAsync();
+                        if (res.Content.Headers.ContentEncoding.ToString().ToLower().Equals("gzip"))
+                        {
+                            reStream = res.Content.ReadAsByteArrayAsync().Result;
+                            htmlString = Unzip(reStream);
+                        }
+                        else
+                        {
+                            htmlString = res.Content.ReadAsStringAsync().Result;
+                        }
                         try
                         {
                             setCookieValue = res.Headers.GetValues("Set-Cookie").ToList();
@@ -485,7 +558,15 @@ namespace Execute
                     else
                     {
                         res = await client.SendAsync((new HttpRequestMessage(method, uri)));
-                        htmlString = await res.Content.ReadAsStringAsync();
+                        if (res.Content.Headers.ContentEncoding.ToString().ToLower().Equals("gzip"))
+                        {
+                            reStream = res.Content.ReadAsByteArrayAsync().Result;
+                            htmlString = Unzip(reStream);
+                        }
+                        else
+                        {
+                            htmlString = res.Content.ReadAsStringAsync().Result;
+                        }
                         try
                         {
                             setCookieValue = res.Headers.GetValues("Set-Cookie").ToList();
@@ -510,7 +591,15 @@ namespace Execute
                     break;
                 case "TRACE":
                     res = await client.SendAsync((new HttpRequestMessage(method, uri)));
-                    htmlString = await res.Content.ReadAsStringAsync();
+                    if (res.Content.Headers.ContentEncoding.ToString().ToLower().Equals("gzip"))
+                    {
+                        reStream = res.Content.ReadAsByteArrayAsync().Result;
+                        htmlString = Unzip(reStream);
+                    }
+                    else
+                    {
+                        htmlString = res.Content.ReadAsStringAsync().Result;
+                    }
                     try
                     {
                         setCookieValue = res.Headers.GetValues("Set-Cookie").ToList();
