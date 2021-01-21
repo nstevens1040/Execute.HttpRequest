@@ -261,24 +261,34 @@ namespace Execute
             }
             client.DefaultRequestHeaders.Add("Path", (new Uri(uri).PathAndQuery));
             List<string> headersToSkip = new List<string>();
+            headersToSkip.Add("pragma");
+            headersToSkip.Add("Cache-Control");
+            headersToSkip.Add("Date");
             headersToSkip.Add("Content-Length");
             headersToSkip.Add("Content-Type");
             headersToSkip.Add("Expires");
             headersToSkip.Add("Last-Modified");
             if (headers != null)
             {
+                headersToSkip.ForEach((i) => {
+                    headers.Remove(i);
+                });
                 IEnumerator enume = headers.Keys.GetEnumerator();
                 while (enume.MoveNext())
                 {
                     string key = enume.Current.ToString();
-                    string value = headers[enume.Current.ToString()].ToString();
-                    if (client.DefaultRequestHeaders.Contains(key) && headersToSkip.Contains(key))
+                    string value = headers[key].ToString();
+                    if (client.DefaultRequestHeaders.Contains(key))
                     {
                         client.DefaultRequestHeaders.Remove(key);
                     }
-                    if (!headersToSkip.Contains(key))
+                    try
                     {
                         client.DefaultRequestHeaders.Add(key, value);
+                    }
+                    catch
+                    {
+                        client.DefaultRequestHeaders.TryAddWithoutValidation(key, value);
                     }
                 }
             }
