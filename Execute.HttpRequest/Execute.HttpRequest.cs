@@ -252,7 +252,7 @@ namespace Execute
                 return Encoding.UTF8.GetString(mso.ToArray());
             }
         }
-        private static async Task<RetObject> SendHttp(string uri, HttpMethod method = null, OrderedDictionary headers = null, CookieCollection cookies = null, string contentType = null, string body = null)
+        private static async Task<RetObject> SendHttp(string uri, HttpMethod method = null, OrderedDictionary headers = null, CookieCollection cookies = null, string contentType = null, string body = null,string filepath = null)
         {
             byte[] reStream;
             RetObject retObj = new RetObject();
@@ -473,19 +473,27 @@ namespace Execute
                                 );
                                 break;
                             case @"multipart/form-data":
-                                if (File.Exists(body))
+                                MultipartFormDataContent mpc = new MultipartFormDataContent("Boundary----" + DateTime.Now.Ticks.ToString("x"));
+                                if (!String.IsNullOrEmpty(filepath))
                                 {
-                                    ByteArrayContent bac = new ByteArrayContent(File.ReadAllBytes(body));
-                                    bac.Headers.Add("Content-Type", "application/octet-stream");
-                                    MultipartFormDataContent mpc = new MultipartFormDataContent("Boundary----" + DateTime.Now.Ticks.ToString("x"));
-                                    mpc.Add(bac, new FileInfo(body).Name, new FileInfo(body).Name);
-                                    res = await client.SendAsync(
-                                        (new HttpRequestMessage(method, uri)
-                                        {
-                                            Content = mpc
-                                        })
-                                    );
+                                    if (File.Exists(filepath))
+                                    {
+                                        ByteArrayContent bac = new ByteArrayContent(File.ReadAllBytes(filepath));
+                                        bac.Headers.Add("Content-Type", "application/octet-stream");
+                                        mpc.Add(bac,new FileInfo(filepath).Name);
+                                    }
                                 }
+                                if (!String.IsNullOrEmpty(body))
+                                {
+                                    StringContent sc = new StringContent(body,Encoding.UTF8, @"application/x-www-form-urlencoded");
+                                    mpc.Add(sc);
+                                }
+                                res = await client.SendAsync(
+                                    (new HttpRequestMessage(method, uri)
+                                    {
+                                        Content = mpc
+                                    })
+                                );
                                 break;
                             default:
                                 res = await client.SendAsync(
@@ -675,9 +683,9 @@ namespace Execute
             retObj.CookieCollection = rCookies;
             return retObj;
         }
-        public static RetObject Send(string uri, HttpMethod method = null, OrderedDictionary headers = null, CookieCollection cookies = null, string contentType = null, string body = null)
+        public static RetObject Send(string uri, HttpMethod method = null, OrderedDictionary headers = null, CookieCollection cookies = null, string contentType = null, string body = null,string filepath=null)
         {
-            Task<RetObject> r = SendHttp(uri, method, headers, cookies, contentType, body);
+            Task<RetObject> r = SendHttp(uri, method, headers, cookies, contentType, body, filepath);
             return r.Result;
         }
     }
