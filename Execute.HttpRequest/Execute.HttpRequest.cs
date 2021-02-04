@@ -256,7 +256,7 @@ namespace Execute
         {
             byte[] reStream;
             RetObject retObj = new RetObject();
-            HttpResponseMessage res;
+            HttpResponseMessage res = new HttpResponseMessage();
             OrderedDictionary httpResponseHeaders = new OrderedDictionary();
             CookieCollection responseCookies;
             CookieCollection rCookies = new CookieCollection();
@@ -454,12 +454,40 @@ namespace Execute
                     }
                     if (!String.IsNullOrEmpty(body))
                     {
-                        res = await client.SendAsync(
-                            (new HttpRequestMessage(method, uri)
-                            {
-                                Content = (new StringContent(body, Encoding.UTF8, contentType))
-                            })
-                        );
+                        switch (contentType)
+                        {
+                            case @"application/x-www-form-urlencoded":
+                                res = await client.SendAsync(
+                                    (new HttpRequestMessage(method, uri)
+                                    {
+                                        Content = (new StringContent(body, Encoding.UTF8, contentType))
+                                    })
+                                );
+                                break;
+                            case @"multipart/form-data":
+                                if (File.Exists(body))
+                                {
+                                    ByteArrayContent bac = new ByteArrayContent(File.ReadAllBytes(body));
+                                    bac.Headers.Add("Content-Type", "application/octet-stream");
+                                    MultipartFormDataContent mpc = new MultipartFormDataContent("Boundary----" + DateTime.Now.Ticks.ToString("x"));
+                                    mpc.Add(bac, new FileInfo(body).Name, new FileInfo(body).Name);
+                                    res = await client.SendAsync(
+                                        (new HttpRequestMessage(method, uri)
+                                        {
+                                            Content = mpc
+                                        })
+                                    );
+                                }
+                                break;
+                            default:
+                                res = await client.SendAsync(
+                                    (new HttpRequestMessage(method, uri)
+                                    {
+                                        Content = (new StringContent(body, Encoding.UTF8, contentType))
+                                    })
+                                );
+                                break;
+                        }
                         if (res.Content.Headers.ContentEncoding.ToString().ToLower().Equals("gzip"))
                         {
                             reStream = res.Content.ReadAsByteArrayAsync().Result;
