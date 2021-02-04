@@ -1,5 +1,6 @@
 [![Build status](https://ci.appveyor.com/api/projects/status/github/nstevens1040/Execute.HttpRequest?svg=true)](https://ci.appveyor.com/project/nstevens1040/Execute.HttpRequest)
-[![Ko-Fi](https://img.shields.io/badge/donate-ko--fi-9cf)](https://ko-fi.com/M4M23DLL6)  
+[![Ko-Fi](https://img.shields.io/badge/donate-ko--fi-9cf)](https://ko-fi.com/M4M23DLL6)
+[![PayPal](https://img.shields.io/badge/donate-paypal-yellow)](paypal.me/nstevens312)  
 # Execute.HttpRequest
 .NET Framework class library used the send HTTP requests and parse the response.  
 # Installation  
