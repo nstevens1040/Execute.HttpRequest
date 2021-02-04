@@ -1,7 +1,8 @@
 [![Build status](https://ci.appveyor.com/api/projects/status/github/nstevens1040/Execute.HttpRequest?svg=true)](https://ci.appveyor.com/project/nstevens1040/Execute.HttpRequest)
 [![Ko-Fi](https://img.shields.io/badge/donate-ko--fi-9cf)](https://ko-fi.com/M4M23DLL6)
 [![PayPal](https://img.shields.io/badge/donate-paypal-yellow)](paypal.me/nstevens312)
-[![Bitcoin](https://img.shields.io/badge/donate-bitcoin-orange)](https://nstevens1040.github.io/btcdonate)  
+[![Bitcoin](https://img.shields.io/badge/donate-bitcoin-orange)](https://nstevens1040.github.io/btcdonate)
+[![Monero](https://img.shields.io/badge/donate-monero-red)](https://donate.cipherdogs.net/?address=44CM3TimSt541AcTigH3fxTKV55wVZMqDEpMQ9gfum97VaHw2Kbj4J3dvbRKHJHGqbVBDeuySA3ngG3yqD9hUF99HNeJbeV)  
 # Execute.HttpRequest
 .NET Framework class library used the send HTTP requests and parse the response.  
 # Installation  
