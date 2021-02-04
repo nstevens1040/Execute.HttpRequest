@@ -262,7 +262,7 @@ namespace Execute
             CookieCollection rCookies = new CookieCollection();
             List<string> setCookieValue = new List<string>();
             CookieContainer coo = new CookieContainer();
-            dynamic dom;
+            dynamic dom = new object();
             string htmlString = String.Empty;
             if (method == null)
             {
@@ -318,7 +318,6 @@ namespace Execute
                     }
                 }
             }
-            //client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("*/*"));
             if (cookies != null)
             {
                 IEnumerator cnume = cookies.GetEnumerator();
@@ -358,8 +357,11 @@ namespace Execute
                     });
                     responseCookies = handle.CookieContainer.GetCookies(new Uri(uri));
                     rCookies = SetCookieParser(setCookieValue, responseCookies, cookies);
-                    dom = DOMParser(htmlString);
-                    retObj.HtmlDocument = dom;
+                    if (!String.IsNullOrEmpty(htmlString))
+                    {
+                        dom = DOMParser(htmlString);
+                        retObj.HtmlDocument = dom;
+                    }
                     retObj.HttpResponseHeaders = httpResponseHeaders;
                     retObj.HttpResponseMessage = res;
                     break;
@@ -389,8 +391,11 @@ namespace Execute
                     });
                     responseCookies = handle.CookieContainer.GetCookies(new Uri(uri));
                     rCookies = SetCookieParser(setCookieValue, responseCookies, cookies);
-                    dom = DOMParser(htmlString);
-                    retObj.HtmlDocument = dom;
+                    if (!String.IsNullOrEmpty(htmlString))
+                    {
+                        dom = DOMParser(htmlString);
+                        retObj.HtmlDocument = dom;
+                    }
                     retObj.HttpResponseHeaders = httpResponseHeaders;
                     retObj.HttpResponseMessage = res;
                     break;
@@ -442,8 +447,11 @@ namespace Execute
                     });
                     responseCookies = handle.CookieContainer.GetCookies(new Uri(uri));
                     rCookies = SetCookieParser(setCookieValue, responseCookies, cookies);
-                    dom = DOMParser(htmlString);
-                    retObj.HtmlDocument = dom;
+                    if (!String.IsNullOrEmpty(htmlString))
+                    {
+                        dom = DOMParser(htmlString);
+                        retObj.HtmlDocument = dom;
+                    }
                     retObj.HttpResponseHeaders = httpResponseHeaders;
                     retObj.HttpResponseMessage = res;
                     break;
@@ -541,8 +549,11 @@ namespace Execute
                     }
                     responseCookies = handle.CookieContainer.GetCookies(new Uri(uri));
                     rCookies = SetCookieParser(setCookieValue, responseCookies, cookies);
-                    dom = DOMParser(htmlString);
-                    retObj.HtmlDocument = dom;
+                    if (!String.IsNullOrEmpty(htmlString))
+                    {
+                        dom = DOMParser(htmlString);
+                        retObj.HtmlDocument = dom;
+                    }
                     retObj.HttpResponseHeaders = httpResponseHeaders;
                     retObj.HttpResponseMessage = res;
                     break;
@@ -612,7 +623,11 @@ namespace Execute
                     }
                     responseCookies = handle.CookieContainer.GetCookies(new Uri(uri));
                     rCookies = SetCookieParser(setCookieValue, responseCookies, cookies);
-                    dom = DOMParser(htmlString);
+                    if (!String.IsNullOrEmpty(htmlString))
+                    {
+                        dom = DOMParser(htmlString);
+                        retObj.HtmlDocument = dom;
+                    }
                     retObj.HtmlDocument = dom;
                     retObj.HttpResponseHeaders = httpResponseHeaders;
                     retObj.HttpResponseMessage = res;
@@ -644,8 +659,11 @@ namespace Execute
                     });
                     responseCookies = handle.CookieContainer.GetCookies(new Uri(uri));
                     rCookies = SetCookieParser(setCookieValue, responseCookies, cookies);
-                    dom = DOMParser(htmlString);
-                    retObj.HtmlDocument = dom;
+                    if (!String.IsNullOrEmpty(htmlString))
+                    {
+                        dom = DOMParser(htmlString);
+                        retObj.HtmlDocument = dom;
+                    }
                     retObj.HttpResponseHeaders = httpResponseHeaders;
                     retObj.HttpResponseMessage = res;
                     break;
