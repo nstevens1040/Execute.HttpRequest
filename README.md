@@ -135,6 +135,17 @@ string contentType = @"application/x-www-form-urlencoded";
 ```cs
 string body = @"Any=string&will=do%2c&so=long&as=it&serves=your&purpose=well";
 ```  
+### FilePath  
+|                |                                                 |
+|----------------|-------------------------------------------------|
+| **Type**       |   System.String                                 |
+| **Position**   |   6                                             |
+| **Purpose**    |   If you're sending a file along with a multipart/form-data POST request, then specify the path to the file you are sending here. |
+| **Required?**  |   No                                            |  
+```cs
+string body = Environment.GetEnvironmentVariable(@"userprofile") + "\\file.txt";
+```  
+
 ## Return object  
 The Send method returns and instance of an object with the typename **Execute.RetObject**.  
 The object contains 5 properties:  
