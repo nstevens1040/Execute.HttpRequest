@@ -143,7 +143,7 @@ string body = @"Any=string&will=do%2c&so=long&as=it&serves=your&purpose=well";
 | **Purpose**    |   If you're sending a file along with a multipart/form-data POST request, then specify the path to the file you are sending here. |
 | **Required?**  |   No                                            |  
 ```cs
-string body = Environment.GetEnvironmentVariable(@"userprofile") + "\\file.txt";
+string filepath = Environment.GetEnvironmentVariable(@"userprofile") + "\\file.txt";
 ```  
 
 ## Return object  
