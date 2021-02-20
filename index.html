@@ -250,107 +250,9 @@
             }        
         </script>
         <link href="https://fonts.googleapis.com/css?family=Quicksand:400,700" rel="stylesheet" type="text/css">
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
-<!--script type='text/javascript' src='https://ko-fi.com/widgets/widget_2.js'></script>
-<script type="text/javascript">kofiwidget2.init('Support Me on Ko-fi', '#29abe0', 'M4M23DLL6');kofiwidget2.draw();</script-->
-<script type="text/javascript">
-    $(document).ready(function() {
-  var root = "https://blockchain.info/";
-  var buttons = $('.blockchain-btn');
-
-  buttons.find('.blockchain').hide();
-  buttons.find('.stage-begin').trigger('show').show();
-
-  buttons.each(function(index) {
-    var _button = $(this);
-
-    (function() {
-      var button = _button;
-
-      button.click(function() {
-        var receivers_address = $(this).data('address');
-        var test = $(this).data('test');
-
-        button.find('.blockchain').hide();
-
-        button.find('.stage-loading').trigger('show').show();
-
-        button.find('.qr-code').empty();
-
-        function checkBalance() {
-          $.ajax({
-            type: "GET",
-            url: root + 'q/getreceivedbyaddress/'+receivers_address+
-              '?start_time='+(new Date).getTime(),
-            data : {format : 'plain'},
-            success: function(response) {
-              if (!response) return;
-
-              var value = parseInt(response);
-
-              if (value > 0 || test) {
-                button.find('.blockchain').hide();
-                button.find('.stage-paid').trigger('show').show().html(button.find('.stage-paid').html().replace('[[value]]', value / 100000000));
-              } else {
-                setTimeout(checkBalance, 5000);
-              }
-            }
-          });
-        }
-
-        try {
-          ws = new WebSocket('wss://ws.blockchain.info/inv');
-
-          if (!ws) return;
-
-          ws.onmessage = function(e) {
-            try {
-              var obj = $.parseJSON(e.data);
-
-              if (obj.op == 'utx') {
-                var tx = obj.x;
-
-                var result = 0;
-                for (var i = 0; i < tx.out.length; i++) {
-                  var output = tx.out[i];
-
-                  if (output.addr == receivers_address) {
-                    result += parseInt(output.value);
-                  }
-                }
-              }
-
-              button.find('.blockchain').hide();
-              button.find('.stage-paid').trigger('show').show().html(button.find('.stage-paid').html().replace('[[value]]', result / 100000000));
-
-              ws.close();
-            } catch(e) {
-              console.log(e);
-
-              console.log(e.data);
-            }
-          };
-
-          ws.onopen = function() {
-            ws.send('{"op":"addr_sub", "addr":"'+ receivers_address +'"}');
-          };
-        } catch (e) {
-          console.log(e);
-        }
-
-        button.find('.stage-ready').trigger('show').show().html(button.find('.stage-ready').html().replace('[[address]]', receivers_address));
-
-        button.find('.qr-code').html('<img style="margin:5px" height=100 width=100 src="https://raw.githubusercontent.com/nstevens1040/images/main/ghbtcqr.png">');
-
-        button.unbind();
-
-        ///Check for incoming payment
-        setTimeout(checkBalance, 5000);
-      });
-    })();
-  });
-});
-</script>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+        <!--script type='text/javascript' src='https://ko-fi.com/widgets/widget_2.js'></script>
+        <script type="text/javascript">kofiwidget2.init('Support Me on Ko-fi', '#29abe0', 'M4M23DLL6');kofiwidget2.draw();</script-->
         <!--link crossorigin="anonymous" media="all" integrity="sha512-bvmPnIfSXuQ7bosV8Ys+XNjZ7wqcfxwStr1JGjt4ibr/TK0ycsQZAYi4/4aziAgybJgv2/5+bw4lJF7CRSRs/g==" rel="stylesheet" href="https://github.githubassets.com/assets/frameworks-6ef98f9c87d25ee43b6e8b15f18b3e5c.css">
         <link crossorigin="anonymous" media="all" integrity="sha512-OYEON3KwVcOaAjKMGi0JtdH2y6WwQk62dSm00zUQunKv3RMXf35VCNoIqIvdTN4BnQ7Ol55Bmq5DH/u65dMPMw==" rel="stylesheet" href="https://github.githubassets.com/assets/behaviors-39810e3772b055c39a02328c1a2d09b5.css">
         <link crossorigin="anonymous" media="all" integrity="sha512-ujNAwWIRY0SW71DJCTFMlYtD8cZGAnKrWQmqt6jzyAbZDE9IIoDX1nrpT6oV/MB0lGmlf22WRTqcTH/snrXztQ==" rel="stylesheet" href="https://github.githubassets.com/assets/github-ba3340c16211634496ef50c909314c95.css"-->
@@ -372,24 +274,9 @@
                 <input type="image" src="https://img.shields.io/badge/donate-paypal-yellow" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
                 <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1" />
             </form>
-            <div style="font-size:16px;margin:0 auto;width:300px; display:inline;" class="blockchain-btn" data-address="1ATRJXWcgYYUyw57uzkcPNu2AHskq2BGsa" data-shared="false">
-                <div style="display:inline;" class="blockchain stage-begin">
-                    <img src="https://img.shields.io/badge/donate-bitcoin-orange"/>
-                </div>
-                <div class="blockchain stage-loading" style="text-align:center">
-                    <img src="https://blockchain.info/Resources/loading-large.gif"/>
-                </div>
-                <div class="blockchain stage-ready">
-                    <p align="center">Please Donate To Bitcoin Address: <b>[[address]]</b></p>
-                    <p align="center" class="qr-code"></p>
-                </div>
-                <div class="blockchain stage-paid">
-                    Donation of <b>[[value]] BTC</b> Received. Thank You.
-                </div>
-                <div class="blockchain stage-error">
-                    <font color="red">[[error]]</font>
-                </div>
-            </div>
+            <a href="https://nstevens1040.github.io/btcdonate" target="_blank">
+                <img src="https://img.shields.io/badge/donate-bitcoin-orange"/>
+            </a>
             <div style="display: inline;">
                 <a style="display: inline;" href="https://donate.cipherdogs.net/?address=44CM3TimSt541AcTigH3fxTKV55wVZMqDEpMQ9gfum97VaHw2Kbj4J3dvbRKHJHGqbVBDeuySA3ngG3yqD9hUF99HNeJbeV"><img style="display: inline;" src="https://img.shields.io/badge/donate-monero-red"></a>
             </div>
