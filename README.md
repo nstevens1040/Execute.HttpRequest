@@ -153,7 +153,7 @@ The object contains 5 properties:
 | Name                     |  Type                                              |  Description                                           |
 |--------------------------|----------------------------------------------------|--------------------------------------------------------|
 | **CookieCollection**     |  System.Net.CookieCollection                       |  Cookies returned from HTTP request                    |
-| **HtmlDocument**         |  System.Object                                     |  HTML document parsed via **mshtml.HTMLDocumentClass** |
+| **HtmlDocument**         |  System.Object                                     |  HTML document parsed via mshtml.HTMLDocumentClass     |
 | **HttpResponseHeaders**  |  System.Collections.Specialized.OrderedDictionary  |  Headers returned from HTTP request                    |
 | **HttpResponseMessage**  |  System.Net.Http.HttpResponseMessage               |  Initial object returned from HttpClient.SendAsync()   | 
 | **ResponseText**         |  System.String                                     |  Text body of the HTTP response                        |  
