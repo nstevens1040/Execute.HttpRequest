@@ -328,6 +328,7 @@ namespace Execute
                 }
                 handle.CookieContainer = coo;
             }
+            bool except = false;
             switch (method.ToString())
             {
                 case "DELETE":
@@ -379,10 +380,14 @@ namespace Execute
                         }
                         catch
                         {
-                            var responseStream = res.Content.ReadAsStreamAsync().ConfigureAwait(false);
+                            except = true;
+                        }
+                        if(except)
+                        {
+                            var responseStream = await res.Content.ReadAsStreamAsync().ConfigureAwait(false);
                             using (var sr = new StreamReader(responseStream, Encoding.UTF8))
                             {
-                                htmlString = sr.ReadToEndAsync().ConfigureAwait(false);
+                                htmlString = await sr.ReadToEndAsync().ConfigureAwait(false);
                             }
                         }
                         
