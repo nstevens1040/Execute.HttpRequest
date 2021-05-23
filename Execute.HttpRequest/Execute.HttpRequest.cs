@@ -379,10 +379,10 @@ namespace Execute
                         }
                         catch
                         {
-                            var responseStream = await res.Content.ReadAsStreamAsync().ConfigureAwait(false);
+                            var responseStream = res.Content.ReadAsStreamAsync().ConfigureAwait(false);
                             using (var sr = new StreamReader(responseStream, Encoding.UTF8))
                             {
-                                htmlString = await sr.ReadToEndAsync().ConfigureAwait(false);
+                                htmlString = sr.ReadToEndAsync().ConfigureAwait(false);
                             }
                         }
                         
