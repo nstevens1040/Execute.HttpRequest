@@ -373,7 +373,19 @@ namespace Execute
                         htmlString = Unzip(reStream);
                     } else
                     {
-                        htmlString = res.Content.ReadAsStringAsync().Result;
+                        try
+                        {
+                            htmlString = res.Content.ReadAsStringAsync().Result;
+                        }
+                        catch
+                        {
+                            var responseStream = await res.Content.ReadAsStreamAsync().ConfigureAwait(false);
+                            using (var sr = new StreamReader(responseStream, Encoding.UTF8))
+                            {
+                                htmlString = await sr.ReadToEndAsync().ConfigureAwait(false);
+                            }
+                        }
+                        
                     }
                     try
                     {
