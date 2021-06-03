@@ -118,6 +118,15 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="Microsoft_VisualStudio_TestPlatform_MSTestAdapter_PlatformServices" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\lib\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Microsoft_VisualStudio_TestPlatform_MSTestAdapter_PlatformServices_Interface" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\lib\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Microsoft_VisualStudio_TestPlatform_MSTest_TestAdapter" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\lib\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="System_Buffers" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\lib\System.Buffers.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
