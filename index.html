@@ -319,7 +319,8 @@
 ) -ReferencedAssemblies @(
     <span class="hljs-string" style="color: rgb(221, 17, 68);">"C:\Windows\Microsoft.Net\assembly\GAC_MSIL\System.Net.Http\v4.0_4.0.0.0__b03f5f7f11d50a3a\System.Net.Http.dll"</span>,
     <span class="hljs-string" style="color: rgb(221, 17, 68);">"C:\Windows\Microsoft.Net\assembly\GAC_MSIL\Microsoft.CSharp\v4.0_4.0.0.0__b03f5f7f11d50a3a\Microsoft.CSharp.dll"</span>,
-    <span class="hljs-string" style="color: rgb(221, 17, 68);">"C:\Windows\assembly\GAC\Microsoft.mshtml\7.0.3300.0__b03f5f7f11d50a3a\Microsoft.mshtml.dll"</span>
+    <span class="hljs-string" style="color: rgb(221, 17, 68);">"C:\Windows\assembly\GAC\Microsoft.mshtml\7.0.3300.0__b03f5f7f11d50a3a\Microsoft.mshtml.dll"</span>,
+    <span class="hljs-string" style="color: rgb(221, 17, 68);">"C:\Windows\Microsoft.Net\assembly\GAC_64\System.Web\v4.0_4.0.0.0__b03f5f7f11d50a3a\System.Web.dll"</span>
 )</pre>
 <h4 id="via-dll-path">via DLL path</h4>
 <p>Clone the repository and build it in Visual Studio. It will create the library file, <strong>Execute.HttpRequest.dll</strong> in <code style="font-family: Consolas, 'Courier New',Courier,Monospace; font-size:10pt; color:#000000;">.\Execute.HttpRequest\bin\Debug\Execute.HttpRequest.dll</code>.<br>Now you can use the <strong>Path</strong> parameter, specifying the path to the DLL file as the parameter to Add-Type instead of TypeDefinition.  </p>
