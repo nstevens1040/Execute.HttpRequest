@@ -1,10 +1,19 @@
 version: 1.1.{build}
+image: Visual Studio 2019
+before_build:
+- nuget restore
+- choco install opencover.portable
+- choco install codecov
 nuget:
   project_feed: true
 build:
   publish_nuget: true
   include_nuget_references: true
   verbosity: normal
+  project: Execute.HttpRequest.sln
+test_script:
+- OpenCover.Console.exe -register:user -target:"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\TestWindow\vstest.console.exe" -targetargs:"C:\Users\nstevens\source\repos\ehr_2021-06-02_0828\UnitTests\bin\Debug\UnitTests.dll" -output:.\codecov_results.xml
+- codecov -f .\codecov_results.xml
 #deploy:
 #  provider: https://ci.appveyor.com/nuget/execute-httprequest-tcrs65r3r7uh
 #  api_key:
