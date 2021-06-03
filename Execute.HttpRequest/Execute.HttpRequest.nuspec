@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>Execute.HttpRequest</id>
-    <version>1.1.4</version>
+    <version>1.1.6</version>
     <title>Execute.HttpRequest</title>
     <authors>nstevens1040</authors>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
@@ -13,7 +13,7 @@
     <releaseNotes>First release</releaseNotes>
     <copyright>Copyright © nstevens1040 2021</copyright>
     <tags>http-request http-response http https http-client dotnet-framework class-library csharp http-get http-post http-put http-delete http-trace cookies</tags>
-    <repository type="git" url="https://github.com/nstevens1040/Execute.HttpRequest.git" branch="master" commit="27c2af501260e1ec344802f9fe5bbb456909309b" />
+    <repository type="git" url="https://github.com/nstevens1040/Execute.HttpRequest.git" branch="master" commit="2c42ebd5caae76ee4135f2c439ccf3ef915f4279" />
   </metadata>
   <files>
     <file src="readme.txt" target="" />
