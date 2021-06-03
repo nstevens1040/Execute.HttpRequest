@@ -5,12 +5,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Net.Http;
-using System.Net.Http.Headers;
 using System.Net;
 using System.Collections;
 using System.Text.RegularExpressions;
 using System.IO;
 using System.IO.Compression;
+using mshtml;
 
 namespace Execute
 {
@@ -31,7 +31,7 @@ namespace Execute
             get;
             set;
         }
-        public dynamic HtmlDocument
+        public HTMLDocument HtmlDocument
         {
             get;
             set;
@@ -44,22 +44,12 @@ namespace Execute
     }
     public class HttpRequest
     {
-        private static dynamic DOMParser(string responseText)
+        private static HTMLDocument DOMParser(string responseText)
         {
-            dynamic domobj = Activator.CreateInstance(Type.GetTypeFromCLSID(Guid.Parse(@"{25336920-03F9-11cf-8FD0-00AA00686F13}")));
-            List<string> memberNames = new List<string>();
-            for (int i = 0; i < memberNames.Count; i++)
-            {
-                memberNames.Add(domobj.GetType().GetMembers()[i].Name);
-            }
-            if (memberNames.Contains("IHTMLDocument2_write"))
-            {
-                domobj.IHTMLDocument2_write(Encoding.Unicode.GetBytes(responseText));
-            }
-            else
-            {
-                domobj.write(Encoding.Unicode.GetBytes(responseText));
-            }
+            HTMLDocument domobj = new HTMLDocument();
+            IHTMLDocument2 doc2 = (IHTMLDocument2)domobj;
+            doc2.write(new object[] { responseText });
+            doc2.close();
             return domobj;
         }
         private static CookieCollection SetCookieParser(List<string> setCookie, CookieCollection cooks, CookieCollection initCookies)
