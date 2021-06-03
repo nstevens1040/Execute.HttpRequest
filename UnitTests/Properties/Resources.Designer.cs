@@ -93,6 +93,26 @@ namespace UnitTests.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] Microsoft_VisualStudio_TestPlatform_TestFramework {
+            get {
+                object obj = ResourceManager.GetObject("Microsoft_VisualStudio_TestPlatform_TestFramework", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Microsoft_VisualStudio_TestPlatform_TestFramework_Extensions {
+            get {
+                object obj = ResourceManager.GetObject("Microsoft_VisualStudio_TestPlatform_TestFramework_Extensions", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] System_Buffers {
             get {
                 object obj = ResourceManager.GetObject("System_Buffers", resourceCulture);

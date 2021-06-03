@@ -127,6 +127,12 @@
   <data name="Microsoft_VisualStudio_TestPlatform_MSTest_TestAdapter" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\lib\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="Microsoft_VisualStudio_TestPlatform_TestFramework" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\lib\Microsoft.VisualStudio.TestPlatform.TestFramework.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Microsoft_VisualStudio_TestPlatform_TestFramework_Extensions" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\lib\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="System_Buffers" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\lib\System.Buffers.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
