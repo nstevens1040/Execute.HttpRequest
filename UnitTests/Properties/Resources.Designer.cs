@@ -63,6 +63,16 @@ namespace UnitTests.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] Microsoft_mshtml {
+            get {
+                object obj = ResourceManager.GetObject("Microsoft_mshtml", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] Microsoft_VisualStudio_TestPlatform_MSTest_TestAdapter {
             get {
                 object obj = ResourceManager.GetObject("Microsoft_VisualStudio_TestPlatform_MSTest_TestAdapter", resourceCulture);
@@ -113,16 +123,6 @@ namespace UnitTests.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] System_Buffers {
-            get {
-                object obj = ResourceManager.GetObject("System_Buffers", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
         internal static byte[] System_Memory {
             get {
                 object obj = ResourceManager.GetObject("System_Memory", resourceCulture);
@@ -136,16 +136,6 @@ namespace UnitTests.Properties {
         internal static byte[] System_Net_Http {
             get {
                 object obj = ResourceManager.GetObject("System_Net_Http", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        internal static byte[] System_Runtime_CompilerServices_Unsafe {
-            get {
-                object obj = ResourceManager.GetObject("System_Runtime_CompilerServices_Unsafe", resourceCulture);
                 return ((byte[])(obj));
             }
         }

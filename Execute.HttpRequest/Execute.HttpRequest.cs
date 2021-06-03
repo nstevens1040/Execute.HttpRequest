@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Net;
 using System.Collections;
 using System.Text.RegularExpressions;
@@ -12,6 +13,7 @@ using System.IO;
 using System.IO.Compression;
 using mshtml;
 using System.Reflection;
+using System.Web;
 
 namespace Execute
 {
@@ -501,7 +503,10 @@ namespace Execute
                                     if (File.Exists(filepath))
                                     {
                                         ByteArrayContent bac = new ByteArrayContent(File.ReadAllBytes(filepath));
-                                        bac.Headers.Add("Content-Type", "application/octet-stream");
+                                        bac.Headers.Add("Content-Type", MimeMapping.GetMimeMapping(filepath));
+                                        bac.Headers.ContentDisposition = ContentDispositionHeaderValue.Parse("attachment");
+                                        bac.Headers.ContentDisposition.Name = "file";
+                                        bac.Headers.ContentDisposition.FileName = new FileInfo(filepath).Name;
                                         mpc.Add(bac, new FileInfo(filepath).Name);
                                     }
                                 }
@@ -552,7 +557,46 @@ namespace Execute
                     }
                     else
                     {
-                        res = await client.SendAsync((new HttpRequestMessage(method, uri)));
+                        switch (contentType)
+                        {
+                            case @"application/x-www-form-urlencoded":
+                                res = await client.SendAsync(
+                                    (new HttpRequestMessage(method, uri)
+                                    {
+                                        Content = (new StringContent(String.Empty, Encoding.UTF8, contentType))
+                                    })
+                                );
+                                break;
+                            case @"multipart/form-data":
+                                MultipartFormDataContent mpc = new MultipartFormDataContent("Boundary----" + DateTime.Now.Ticks.ToString("x"));
+                                if (!String.IsNullOrEmpty(filepath))
+                                {
+                                    if (File.Exists(filepath))
+                                    {
+                                        ByteArrayContent bac = new ByteArrayContent(File.ReadAllBytes(filepath));
+                                        bac.Headers.Add("Content-Type", MimeMapping.GetMimeMapping(filepath));
+                                        bac.Headers.ContentDisposition = ContentDispositionHeaderValue.Parse("attachment");
+                                        bac.Headers.ContentDisposition.Name = "file";
+                                        bac.Headers.ContentDisposition.FileName = new FileInfo(filepath).Name;
+                                        mpc.Add(bac, new FileInfo(filepath).Name);
+                                    }
+                                }
+                                if (!String.IsNullOrEmpty(body))
+                                {
+                                    StringContent sc = new StringContent(body, Encoding.UTF8, @"application/x-www-form-urlencoded");
+                                    mpc.Add(sc);
+                                }
+                                res = await client.SendAsync(
+                                    (new HttpRequestMessage(method, uri)
+                                    {
+                                        Content = mpc
+                                    })
+                                );
+                                break;
+                            default:
+                                res = await client.SendAsync((new HttpRequestMessage(method, uri)));
+                                break;
+                        }
                         if (res.Content.Headers.ContentEncoding.ToString().ToLower().Equals("gzip"))
                         {
                             reStream = res.Content.ReadAsByteArrayAsync().Result;

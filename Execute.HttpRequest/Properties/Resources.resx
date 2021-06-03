@@ -121,4 +121,7 @@
   <data name="Microsoft_mshtml" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\lib\Microsoft.mshtml.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="System_Web" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\lib\System.Web.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>

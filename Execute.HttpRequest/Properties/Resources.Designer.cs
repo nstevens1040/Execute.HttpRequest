@@ -69,5 +69,15 @@ namespace Execute.Properties {
                 return ((byte[])(obj));
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] System_Web {
+            get {
+                object obj = ResourceManager.GetObject("System_Web", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
     }
 }
