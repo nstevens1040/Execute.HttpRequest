@@ -11,6 +11,7 @@ using System.Text.RegularExpressions;
 using System.IO;
 using System.IO.Compression;
 using mshtml;
+using System.Reflection;
 
 namespace Execute
 {
@@ -42,8 +43,22 @@ namespace Execute
             set;
         }
     }
-    public class HttpRequest
+    public class Utils
     {
+        public void Ctor()
+        {
+            AppDomain.CurrentDomain.AssemblyResolve += (sender, args) =>
+            {
+                string resourceName = new AssemblyName(args.Name).Name + ".dll";
+                string resource = Array.Find(this.GetType().Assembly.GetManifestResourceNames(), element => element.EndsWith(resourceName));
+                using (var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(resource))
+                {
+                    Byte[] assemblyData = new Byte[stream.Length];
+                    stream.Read(assemblyData, 0, assemblyData.Length);
+                    return Assembly.Load(assemblyData);
+                }
+            };
+        }
         private static HTMLDocument DOMParser(string responseText)
         {
             HTMLDocument domobj = new HTMLDocument();
@@ -242,7 +257,7 @@ namespace Execute
                 return Encoding.UTF8.GetString(mso.ToArray());
             }
         }
-        private static async Task<RetObject> SendHttp(string uri, HttpMethod method = null, OrderedDictionary headers = null, CookieCollection cookies = null, string contentType = null, string body = null,string filepath = null)
+        public async Task<RetObject> SendHttp(string uri, HttpMethod method = null, OrderedDictionary headers = null, CookieCollection cookies = null, string contentType = null, string body = null, string filepath = null)
         {
             byte[] reStream;
             RetObject retObj = new RetObject();
@@ -372,7 +387,7 @@ namespace Execute
                         {
                             except = true;
                         }
-                        if(except)
+                        if (except)
                         {
                             var responseStream = await res.Content.ReadAsStreamAsync().ConfigureAwait(false);
                             using (var sr = new StreamReader(responseStream, Encoding.UTF8))
@@ -380,7 +395,7 @@ namespace Execute
                                 htmlString = await sr.ReadToEndAsync().ConfigureAwait(false);
                             }
                         }
-                        
+
                     }
                     try
                     {
@@ -487,12 +502,12 @@ namespace Execute
                                     {
                                         ByteArrayContent bac = new ByteArrayContent(File.ReadAllBytes(filepath));
                                         bac.Headers.Add("Content-Type", "application/octet-stream");
-                                        mpc.Add(bac,new FileInfo(filepath).Name);
+                                        mpc.Add(bac, new FileInfo(filepath).Name);
                                     }
                                 }
                                 if (!String.IsNullOrEmpty(body))
                                 {
-                                    StringContent sc = new StringContent(body,Encoding.UTF8, @"application/x-www-form-urlencoded");
+                                    StringContent sc = new StringContent(body, Encoding.UTF8, @"application/x-www-form-urlencoded");
                                     mpc.Add(sc);
                                 }
                                 res = await client.SendAsync(
@@ -690,9 +705,14 @@ namespace Execute
             retObj.CookieCollection = rCookies;
             return retObj;
         }
+    }
+    public class HttpRequest
+    {
         public static RetObject Send(string uri, HttpMethod method = null, OrderedDictionary headers = null, CookieCollection cookies = null, string contentType = null, string body = null,string filepath=null)
         {
-            Task<RetObject> r = SendHttp(uri, method, headers, cookies, contentType, body, filepath);
+            Utils utils = new Utils();
+            utils.Ctor();
+            Task<RetObject> r = utils.SendHttp(uri, method, headers, cookies, contentType, body, filepath);
             return r.Result;
         }
     }
