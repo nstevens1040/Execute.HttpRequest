@@ -251,5 +251,11 @@ namespace UnitTest1
             );
             Assert.IsTrue(r.CookieCollection.Count == 1);
         }
+        [TestMethod]
+        public void TestHttpResponseHeaders()
+        {
+            RetObject r = Execute.HttpRequest.Send("https://nstevens1040.github.io/Execute.HttpRequest/");
+            Assert.IsTrue(r.HttpResponseHeaders.Count > 0);
+        }
     }
 }
