@@ -228,5 +228,28 @@ namespace UnitTest1
             );
             Assert.IsTrue(r.CookieCollection.Count > 0);
         }
+        [TestMethod]
+        public void TestCookieNullReturn()
+        {
+            CookieCollection collection = new CookieCollection();
+            Cookie cookie = new Cookie()
+            {
+                Name = "fakecookie",
+                Value = "fakevalue",
+                Domain = ".nstevens1040.github.io",
+                Path = "/",
+                Expires = DateTime.Now.AddYears(1),
+                Secure = true,
+                HttpOnly = false
+            };
+            collection.Add(cookie);
+            RetObject r = Execute.HttpRequest.Send(
+                "https://nstevens1040.github.io/Execute.HttpRequest/",
+                HttpMethod.Get,
+                null,
+                collection
+            );
+            Assert.IsTrue(r.CookieCollection.Count == 1);
+        }
     }
 }
