@@ -134,9 +134,6 @@ namespace Execute
                                 case "expires":
                                     cke.Expires = DateTime.Parse(value);
                                     break;
-                                case "name":
-                                    cke.Name = value;
-                                    break;
                                 case "path":
                                     cke.Path = value;
                                     break;
@@ -145,9 +142,6 @@ namespace Execute
                                     break;
                                 case "secure":
                                     cke.Secure = bool.Parse(value);
-                                    break;
-                                case "value":
-                                    cke.Value = value;
                                     break;
                                 case "version":
                                     cke.Version = int.Parse(value);
@@ -280,16 +274,15 @@ namespace Execute
                 AutomaticDecompression = (DecompressionMethods)1 & (DecompressionMethods)2,
                 UseProxy = false,
                 AllowAutoRedirect = true,
-                MaxAutomaticRedirections = 500
+                MaxAutomaticRedirections = Int32.MaxValue,
+                MaxConnectionsPerServer = Int32.MaxValue,
+                MaxResponseHeadersLength = Int32.MaxValue,
+                SslProtocols = System.Security.Authentication.SslProtocols.Tls12
             };
             HttpClient client = new HttpClient(handle);
             if (!client.DefaultRequestHeaders.Contains("User-Agent"))
             {
                 client.DefaultRequestHeaders.Add("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36");
-            }
-            if (client.DefaultRequestHeaders.Contains("Path"))
-            {
-                client.DefaultRequestHeaders.Remove("Path");
             }
             client.DefaultRequestHeaders.Add("Path", (new Uri(uri).PathAndQuery));
             List<string> headersToSkip = new List<string>();
@@ -580,11 +573,6 @@ namespace Execute
                                         bac.Headers.ContentDisposition.FileName = new FileInfo(filepath).Name;
                                         mpc.Add(bac, new FileInfo(filepath).Name);
                                     }
-                                }
-                                if (!String.IsNullOrEmpty(body))
-                                {
-                                    StringContent sc = new StringContent(body, Encoding.UTF8, @"application/x-www-form-urlencoded");
-                                    mpc.Add(sc);
                                 }
                                 res = await client.SendAsync(
                                     (new HttpRequestMessage(method, uri)
