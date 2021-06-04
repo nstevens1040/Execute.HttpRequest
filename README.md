@@ -2,7 +2,7 @@
 [![MIT License](https://img.shields.io/apm/l/atomic-design-ui.svg?)](https://github.com/nstevens1040/Execute.HttpRequest/blob/master/LICENSE)
 [![Ko-Fi](https://img.shields.io/badge/donate-ko--fi-9cf)](https://ko-fi.com/M4M23DLL6)
 [![PayPal](https://img.shields.io/badge/donate-paypal-yellow)](https://paypal.me/nstevens312)
-[![Bitcoin](https://img.shields.io/badge/donate-bitcoin-orange)](https://nstevens1040.github.io/btcdonate)
+[![Bitcoin](https://img.shields.io/badge/bitcoin-3NHxJ9j1hBxqQGM9BNWXE9j1QLxxikhpGe-orange)](https://nstevens1040.github.io/btcdonate)
 [![Monero](https://img.shields.io/badge/donate-monero-red)](https://donate.cipherdogs.net/?address=44CM3TimSt541AcTigH3fxTKV55wVZMqDEpMQ9gfum97VaHw2Kbj4J3dvbRKHJHGqbVBDeuySA3ngG3yqD9hUF99HNeJbeV)  
 # Execute.HttpRequest
 .NET Framework class library used the send HTTP requests and parse the response.  
