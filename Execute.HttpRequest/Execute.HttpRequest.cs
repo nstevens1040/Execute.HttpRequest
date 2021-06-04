@@ -194,7 +194,7 @@ namespace Execute
                 }
                 if (ckevalues != null)
                 {
-                    if (rckevalues != null)
+                    if (rckevalues.Count > 0)
                     {
                         List<string> rNames = new List<string>();
                         List<string> rValue = new List<string>();

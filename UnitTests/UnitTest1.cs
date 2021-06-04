@@ -257,5 +257,11 @@ namespace UnitTest1
             RetObject r = Execute.HttpRequest.Send("https://nstevens1040.github.io/Execute.HttpRequest/");
             Assert.IsTrue(r.HttpResponseHeaders.Count > 0);
         }
+        [TestMethod]
+        public void MakeRetObject()
+        {
+            RetObject r = new RetObject();
+            Assert.IsTrue(r != null);
+        }
     }
 }
