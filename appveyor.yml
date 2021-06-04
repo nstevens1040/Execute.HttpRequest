@@ -12,7 +12,7 @@ build:
   verbosity: normal
   project: Execute.HttpRequest.sln
 test_script:
-- OpenCover.Console.exe -register:user -filter:"+[Execute.HttpRequest]*" -target:"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\TestWindow\vstest.console.exe" -targetargs:"C:\projects\execute-httprequest-scamo\UnitTests\bin\Debug\UnitTests.dll" -output:.\codecov_results.xml
+- OpenCover.Console.exe -register:user -filter:"+[Execute*]* -[*]*.Properties.*" -target:"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\TestWindow\vstest.console.exe" -targetargs:"C:\projects\execute-httprequest-scamo\UnitTests\bin\Debug\UnitTests.dll" -output:.\codecov_results.xml
 - codecov -f .\codecov_results.xml
 #deploy:
 #  provider: https://ci.appveyor.com/nuget/execute-httprequest-tcrs65r3r7uh
