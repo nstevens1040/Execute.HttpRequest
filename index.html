@@ -231,6 +231,28 @@
                     transform: rotate(0) scale(1)
                 }
             }
+            .github-corner:hover .octo-arm {
+                animation: octocat-wave 560ms ease-in-out
+            }
+            @keyframes octocat-wave {
+                0%, 100% {
+                    transform: rotate(0)
+                }
+                20%, 60% {
+                    transform: rotate(-25deg)
+                }
+                40%, 80% {
+                    transform: rotate(10deg)
+                }
+            }
+            @media (max-width:500px) {
+                .github-corner:hover .octo-arm {
+                    animation: none
+                }
+                .github-corner .octo-arm {
+                    animation: octocat-wave 560ms ease-in-out
+                }
+            }
         </style>
         <script type="application/javascript">
             function copyToClipboard(id){
@@ -263,23 +285,48 @@
             <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M9P68D9" height="0" width="0" style="display:none;visibility:hidden"></iframe>
         </noscript>
         <!-- End Google Tag Manager (noscript) -->
+        <div style="position: fixed; right: 0; top: 0;">
+            <a href="https://github.com/nstevens1040/Execute.HttpRequest" class="github-corner" aria-label="View source on GitHub" title="View source on GitHub" target="_blank">
+                <svg width="80" height="80" viewBox="0 0 250 250" style="fill:#fff; color:#333; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true">
+                    <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+                    <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+                    <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path>
+                </svg>
+            </a>
+        </div>
+
         <div>
-            <a style="display: inline;" href="https://ci.appveyor.com/project/nstevens1040/Execute.HttpRequest" target="_blank"><img src="https://ci.appveyor.com/api/projects/status/github/nstevens1040/Execute.HttpRequest?svg=true" alt="Build status"></a>
-            <a style="display: inline;" href="https://codecov.io/gh/nstevens1040/Execute.HttpRequest" target="_blank"><img src="https://codecov.io/gh/nstevens1040/Execute.HttpRequest/branch/master/graph/badge.svg?token=M9gp01ySOr" alt="Code coverage"></a>
-            <!--a href='https://ko-fi.com/supportkofi' target='_blank'><img height='35' style='border:0px;height:46px;' src='https://az743702.vo.msecnd.net/cdn/kofi3.png?v=0' border='0' alt='Buy Me a Coffee at ko-fi.com' /-->
-            <a style="display: inline;" href="https://ko-fi.com/M4M23DLL6" target="_blank"><img src="https://img.shields.io/badge/donate-ko--fi-9cf"></a>
-            <form style="display:inline;" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
-                <input type="hidden" name="cmd" value="_donations" />
-                <input type="hidden" name="business" value="N8B796NE3Z6EQ" />
-                <input type="hidden" name="currency_code" value="USD" />
-                <input type="image" src="https://img.shields.io/badge/donate-paypal-yellow" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
-                <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1" />
-            </form>
-            <a href="https://nstevens1040.github.io/btcdonate" target="_blank">
-                <img src="https://img.shields.io/badge/donate-bitcoin-orange"/>
+            <div style="display: inline;">
+                <a style="display: inline;" href="https://ci.appveyor.com/project/nstevens1040/execute-httprequest-scamo" target="_blank">
+                    <img src="https://ci.appveyor.com/api/projects/status/github/nstevens1040/Execute.HttpRequest?svg=true" alt="Build status" title="Build status">
+                </a>
+            </div>
+            <div style="display: inline;">
+                <a style="display: inline;" href="https://codecov.io/gh/nstevens1040/Execute.HttpRequest" target="_blank">
+                    <img src="https://codecov.io/gh/nstevens1040/Execute.HttpRequest/branch/master/graph/badge.svg?token=M9gp01ySOr" alt="Code coverage" title="Code coverage">
+                </a>
+            </div>
+            <a style="display: inline;" href="https://ko-fi.com/M4M23DLL6" target="_blank">
+                <img src="https://img.shields.io/badge/donate-ko--fi-9cf" alt="ko-fi" title="ko-fi">
             </a>
             <div style="display: inline;">
-                <a style="display: inline;" href="https://nstevens1040.github.io/sparesomechange/"><img style="display: inline;" src="https://img.shields.io/badge/donate-monero-red"></a>
+                <form style="display: inline;" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+                    <input type="hidden" name="cmd" value="_donations"/>
+                    <input type="hidden" name="business" value="N8B796NE3Z6EQ"/>
+                    <input type="hidden" name="currency_code" value="USD" />
+                    <input type="image" src="https://img.shields.io/badge/donate-paypal-blue" name="submit" title="PayPal - The safer, easier way to show your support!" alt="Donate with PayPal button" />
+                    <img src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
+                </form>
+            </div>
+            <div style="display: inline;">
+                <a href="https://nstevens1040.github.io/sparesomechange/" target="_blank">
+                    <img src="https://img.shields.io/badge/donate-monero-red" alt="Don't hate, donate (Monero)" title="Don't hate, donate (Monero)">
+                </a>
+            </div>
+            <div style="display: inline;">
+                <a href="https://nstevens1040.github.io/donthatedonate/" target="_blank">
+                    <img src="https://img.shields.io/badge/donate-bitcoin-orange" alt="Don't hate, donate (Bitcoin)" title="Don't hate, donate (Bitcoin)">
+                </a>
             </div>
         </div>
 <h1 id="execute-httprequest">Execute.HttpRequest</h1>
