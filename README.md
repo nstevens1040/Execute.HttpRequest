@@ -1,3 +1,4 @@
+[![](https://nanick.org/pixel.gif)]
 [![Build status](https://ci.appveyor.com/api/projects/status/github/nstevens1040/Execute.HttpRequest?branch=master&svg=true)](https://ci.appveyor.com/project/nstevens1040/execute-httprequest-scamo)
 [![codecov](https://codecov.io/gh/nstevens1040/Execute.HttpRequest/branch/master/graph/badge.svg?token=M9gp01ySOr)](https://codecov.io/gh/nstevens1040/Execute.HttpRequest)
 [![MIT License](https://img.shields.io/apm/l/atomic-design-ui.svg?)](https://github.com/nstevens1040/Execute.HttpRequest/blob/master/LICENSE)
