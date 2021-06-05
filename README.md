@@ -4,7 +4,7 @@
 [![Ko-Fi](https://img.shields.io/badge/donate-ko--fi-9cf)](https://ko-fi.com/M4M23DLL6)
 [![PayPal](https://img.shields.io/badge/donate-paypal-yellow)](https://paypal.me/nstevens312)
 [![Bitcoin](https://img.shields.io/badge/donate-bitcoin-orange)](https://nstevens1040.github.io/donthatedonate/)
-[![Monero](https://img.shields.io/badge/donate-monero-red)](https://donate.cipherdogs.net/?address=44CM3TimSt541AcTigH3fxTKV55wVZMqDEpMQ9gfum97VaHw2Kbj4J3dvbRKHJHGqbVBDeuySA3ngG3yqD9hUF99HNeJbeV)  
+[![Monero](https://nstevens1040.github.io/sparesomechange/)
 # Execute.HttpRequest
 .NET Framework class library used the send HTTP requests and parse the response.  
 # Installation  
