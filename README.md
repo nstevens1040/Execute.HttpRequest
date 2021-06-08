@@ -24,6 +24,8 @@ $r.ResponseText
 ```  
 This should output the response text from nstevens1040.github.io/Execute.HttpRequest.  
   
+<img height=436 width=800 src="https://raw.githubusercontent.com/nstevens1040/Execute.HttpRequest/master/.ignore/render1623185483992.gif"/>  
+    
 ## .NET Framework project in Visual Studio    
 Clone the repository and build it in Visual Studio. It will create the library file, **Execute.HttpRequest.dll** in `.\source\repos\Execute.HttpRequest\Execute.HttpRequest\bin\Debug\Execute.HttpRequest.dll`.  
 Make a reference to **Execute.HttpRequest.dll** and use the **Send** method:  
