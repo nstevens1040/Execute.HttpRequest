@@ -8,6 +8,18 @@
 # Execute.HttpRequest
 .NET Framework class library used the send HTTP requests and parse the response.  
 # Installation  
+## Quick Start  
+Make Execute.HttpRequest available in your current Windows PowerShell session using the script below.  
+```ps1
+[System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls12
+iex (irm "https://ci.appveyor.com/api/buildjobs/k1wti53dsdv789jk/artifacts/Quick-Start.ps1")
+```  
+Test it.  
+```ps1
+$r = [Execute.HttpRequest]::Send("https://google.com/")
+$r.ResponseText
+```  
+The output should be Google.com's HTML response.  
 ## .NET Framework project in Visual Studio    
 Clone the repository and build it in Visual Studio. It will create the library file, **Execute.HttpRequest.dll** in `.\source\repos\Execute.HttpRequest\Execute.HttpRequest\bin\Debug\Execute.HttpRequest.dll`.  
 Make a reference to **Execute.HttpRequest.dll** and use the **Send** method:  
