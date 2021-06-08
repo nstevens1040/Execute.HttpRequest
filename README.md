@@ -49,26 +49,13 @@ namespace JustAnExample
 }
 ```  
 ## Windows PowerShell 5.1  
-### Add-Type  
-#### via TypeDefinition  
-The PowerShell command below will pull the C# code directly from GitHub and make the library available to use within the current PowerShell session using the **TypeDefinition** parameter to the Add-Type command.  
-```ps1
-Add-Type -TypeDefinition ([System.Net.WebClient]::new()).DownloadString(
-    "https://raw.githubusercontent.com/nstevens1040/Execute.HttpRequest/master/Execute.HttpRequest/Execute.HttpRequest.cs"
-) -ReferencedAssemblies @(
-    "C:\Windows\Microsoft.Net\assembly\GAC_MSIL\System.Net.Http\v4.0_4.0.0.0__b03f5f7f11d50a3a\System.Net.Http.dll",
-    "C:\Windows\Microsoft.Net\assembly\GAC_MSIL\Microsoft.CSharp\v4.0_4.0.0.0__b03f5f7f11d50a3a\Microsoft.CSharp.dll",
-    "C:\Windows\assembly\GAC\Microsoft.mshtml\7.0.3300.0__b03f5f7f11d50a3a\Microsoft.mshtml.dll",
-    "C:\Windows\Microsoft.Net\assembly\GAC_64\System.Web\v4.0_4.0.0.0__b03f5f7f11d50a3a\System.Web.dll"
-)
-```  
-#### via DLL path  
+### Add-Type using the path to the DLL  
 Clone the repository and build it in Visual Studio. It will create the library file, **Execute.HttpRequest.dll** in `.\source\repos\Execute.HttpRequest\Execute.HttpRequest\bin\Debug\Execute.HttpRequest.dll`.  
 Now you can use the **Path** parameter, specifying the path to the DLL file as the parameter to Add-Type instead of TypeDefinition.  
 ```ps1
 Add-Type -Path .\source\repos\Execute.HttpRequest\Execute.HttpRequest\bin\Debug\Execute.HttpRequest.dll
 ```  
-Either way, once the command completes, you can use the library in PowerShell like this:
+Once the command completes, you can use the library in PowerShell like this:
 ```ps1
 $re = [Execute.HttpRequest]::Send(
     "https://fakedomain.com/post",
