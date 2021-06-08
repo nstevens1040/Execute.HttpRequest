@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>Execute.HttpRequest</id>
-    <version>1.1.6</version>
+    <version>1.1.8</version>
     <title>Execute.HttpRequest</title>
     <authors>nstevens1040</authors>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
