@@ -256,7 +256,7 @@
             }
         </style>
         <script type="application/javascript">
-            function copyToClipboard(id){
+            function copyToClipboard(id,copied){
                 var ta = document.createElement("textarea");
                 ta.id = "neek";
                 ta.value = document.getElementById(id).innerText;
@@ -265,9 +265,9 @@
                 document.execCommand("copy");
                 setTimeout(function(){
                     document.body.removeChild(document.getElementById("neek"));
-                    document.getElementById("copied").style.display = "inline";
+                    document.getElementById(copied).style.display = "inline";
                     setTimeout(function(){
-                        document.getElementById("copied").style.display = "none";
+                        document.getElementById(copied).style.display = "none";
                     },5000);
                 },200);
             }        
@@ -335,13 +335,13 @@
 <h1 id="installation">Installation</h1>
 <h2 id="quick-start">Quick Start</h2>
 <p>Make Execute.HttpRequest available in your current Windows PowerShell session using the script below.</p>
-<button style="margin-bottom: 0px;display:inline;" onclick="copyToClipboard('ps1_1');">COPY</button><span style="display: none;" id="copied">  Copied!</span>
+<button style="margin-bottom: 0px;display:inline;" onclick="copyToClipboard('ps1_1','copied1');">COPY</button><span style="display: none;" id="copied1">  Copied!</span>
 <pre id="ps1_1" class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; color: rgb(51, 51, 51); background: rgb(248, 248, 248);">[System<span class="hljs-selector-class">.Net</span><span class="hljs-selector-class">.ServicePointManager</span>]::SecurityProtocol = [System<span class="hljs-selector-class">.Net</span><span class="hljs-selector-class">.SecurityProtocolType</span>]::Tls12
 <span class="hljs-built_in" style="color: rgb(0, 134, 179);">iex</span> (<span class="hljs-built_in" style="color: rgb(0, 134, 179);">irm</span> <span class="hljs-string" style="color: rgb(221, 17, 68);">"https://github.com/nstevens1040/Execute.HttpRequest/releases/download/v1.1.8/Quick-Start.ps1"</span>)</code>
 </pre>
 <p><img height=188 width=800 src="https://raw.githubusercontent.com/nstevens1040/Execute.HttpRequest/master/.ignore/render1623183507697.gif"/>  </p>
 <p>Test it.</p>
-<button style="margin-bottom: 0px;display:inline;" onclick="copyToClipboard('ps1_2');">COPY</button><span style="display: none;" id="copied">  Copied!</span>
+<button style="margin-bottom: 0px;display:inline;" onclick="copyToClipboard('ps1_2','copied2');">COPY</button><span style="display: none;" id="copied2">  Copied!</span>
 <pre id="ps1_2" class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; color: rgb(51, 51, 51); background: rgb(248, 248, 248);"><code class="lang-ps1"><span class="hljs-variable" style="color: teal;">$r</span> = [<span class="hljs-built_in">Execute</span>.HttpRequest]::<span class="hljs-built_in">Send</span>(<span class="hljs-string" style="color: rgb(221, 17, 68);">"https://nstevens1040.github.io/Execute.HttpRequest/"</span>)
 <span class="hljs-variable" style="color: teal;">$r</span>.ResponseText</code>
 </pre>
