@@ -40,7 +40,7 @@ deploy:
     description: 'Pushing Quick-Start.ps1'
     auth_token:
       secure: ElzOGqa44YRqwJ9jKgjBNDbPEmxb1Mg3I+0TxsPQg8OdUSOA8T8DwkwoKofTXMQT
-    artifact: C:\projects\execute-httprequest-scamo\Quick-Start.ps1
+    artifact: /.*\.ps1/ 
     draft: false
     prerelease: false
 artifacts:
