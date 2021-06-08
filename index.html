@@ -5,28 +5,23 @@
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-NQ4PTXX1EJ"></script>
         <script>
             window.dataLayer = window.dataLayer || [];
-            function gtag() {
-                dataLayer.push(arguments);
-            }
+            function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
             gtag('config', 'G-NQ4PTXX1EJ');
         </script>
         <!-- Google Tag Manager -->
         <script>
-            (function(w, d, s, l, i) {
-                w[l] = w[l] || [];
-                w[l].push({
+            (function(w,d,s,l,i){
+                w[l]=w[l]||[];w[l].push({
                     'gtm.start': new Date().getTime(),
-                    event: 'gtm.js'
+                    event:'gtm.js'
                 });
-                var f = d.getElementsByTagName(s)[0]
-                  , j = d.createElement(s)
-                  , dl = l != 'dataLayer' ? '&l=' + l : '';
-                j.async = true;
-                j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
-                f.parentNode.insertBefore(j, f);
-            }
-            )(window, document, 'script', 'dataLayer', 'GTM-M9P68D9');
+                var f=d.getElementsByTagName(s)[0],
+                j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';
+                j.async=true;
+                j.src= 'https://www.googletagmanager.com/gtm.js?id='+i+dl;
+                f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer','GTM-M9P68D9');
         </script>
         <!-- End Google Tag Manager -->
         <meta charset="utf-8"/>
@@ -55,7 +50,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <meta name="language" content="English">
         <meta name="author" content="Nicholas Stevens, nstevens@nanick.org">
-        <meta name="copyright" content="Copyright 2021"/>
+        <meta name="copyright" content="Copyright 2021" />
         <meta http-equiv="cache-control" content="no-cache"/>
         <meta http-equiv='Pragma' content='no-cache'>
         <meta name="reply-to" content="nstevens@nanick.org">
@@ -81,26 +76,22 @@
                 border: 1px solid black;
                 padding: 5px;
             }
-
             body {
                 font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
                 font-size: 11pt;
                 margin-left: 100px;
                 margin-right: 200px;
             }
-
             #content {
                 margin-left: auto;
                 margin-right: auto;
                 width: 100%;
             }
-
             pre {
                 font-family: monospace;
                 white-space: pre;
                 font-size: 11pt;
             }
-
             #neek {
                 position: absolute;
                 opacity: .01;
@@ -108,7 +99,6 @@
                 overflow: hidden;
                 z-index: -1;
             }
-
             img.kofiimg {
                 display: initial!important;
                 vertical-align: middle;
@@ -217,84 +207,70 @@
                 0% {
                     transform: rotate(0) scale(1)
                 }
-
                 60% {
                     transform: rotate(0) scale(1)
                 }
-
                 75% {
                     transform: rotate(0) scale(1.12)
                 }
-
                 80% {
                     transform: rotate(0) scale(1.1)
                 }
-
                 84% {
                     transform: rotate(-10deg) scale(1.1)
                 }
-
                 88% {
                     transform: rotate(10deg) scale(1.1)
                 }
-
                 92% {
                     transform: rotate(-10deg) scale(1.1)
                 }
-
                 96% {
                     transform: rotate(10deg) scale(1.1)
                 }
-
                 100% {
                     transform: rotate(0) scale(1)
                 }
             }
-
             .github-corner:hover .octo-arm {
                 animation: octocat-wave 560ms ease-in-out
             }
-
             @keyframes octocat-wave {
                 0%, 100% {
                     transform: rotate(0)
                 }
-
                 20%, 60% {
                     transform: rotate(-25deg)
                 }
-
                 40%, 80% {
                     transform: rotate(10deg)
                 }
             }
-
-            @media (max-width: 500px) {
+            @media (max-width:500px) {
                 .github-corner:hover .octo-arm {
                     animation: none
                 }
-
                 .github-corner .octo-arm {
                     animation: octocat-wave 560ms ease-in-out
                 }
             }
         </style>
         <script type="application/javascript">
-            function copyToClipboard(id) {
+            function copyToClipboard(id){
                 var ta = document.createElement("textarea");
                 ta.id = "neek";
                 ta.value = document.getElementById(id).innerText;
                 document.body.appendChild(ta);
                 document.getElementById("neek").select();
                 document.execCommand("copy");
-                setTimeout(function() {
+                setTimeout(function(){
                     document.body.removeChild(document.getElementById("neek"));
                     document.getElementById("copied").style.display = "inline";
-                    setTimeout(function() {
+                    setTimeout(function(){
                         document.getElementById("copied").style.display = "none";
-                    }, 5000);
-                }, 200);
-            }
+                    },5000);
+                },200);
+            }        
         </script>
         <link href="https://fonts.googleapis.com/css?family=Quicksand:400,700" rel="stylesheet" type="text/css">
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
@@ -319,6 +295,7 @@
                 </svg>
             </a>
         </div>
+
         <div>
             <div style="display: inline;">
                 <a style="display: inline;" href="https://ci.appveyor.com/project/nstevens1040/execute-httprequest-scamo" target="_blank">
@@ -337,8 +314,8 @@
                 <form style="display: inline;" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
                     <input type="hidden" name="cmd" value="_donations"/>
                     <input type="hidden" name="business" value="N8B796NE3Z6EQ"/>
-                    <input type="hidden" name="currency_code" value="USD"/>
-                    <input type="image" src="https://img.shields.io/badge/donate-paypal-blue" name="submit" title="PayPal - The safer, easier way to show your support!" alt="Donate with PayPal button"/>
+                    <input type="hidden" name="currency_code" value="USD" />
+                    <input type="image" src="https://img.shields.io/badge/donate-paypal-blue" name="submit" title="PayPal - The safer, easier way to show your support!" alt="Donate with PayPal button" />
                     <img src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
                 </form>
             </div>
@@ -353,433 +330,256 @@
                 </a>
             </div>
         </div>
-        <h1 id="execute-httprequest">Execute.HttpRequest</h1>
-        <p>.NET Framework class library used the send HTTP requests and parse the response.  </p>
-        <h1 id="installation">Installation</h1>
-        <h2 id="quick-start">Quick Start</h2>
-        <p>Make Execute.HttpRequest available in your current Windows PowerShell session using the script below.</p>
-        <button style="margin-bottom: 0px;display:inline;" onclick="copyToClipboard('ps1_1');">COPY</button>
-        <span style="display: none;" id="copied">Copied!</span>
-        <pre id="ps1_1" class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; color: rgb(51, 51, 51); background: rgb(248, 248, 248);">
-            [System<span class="hljs-selector-class">.Net</span>
-            <span class="hljs-selector-class">.ServicePointManager</span>
-            ]::SecurityProtocol = [System<span class="hljs-selector-class">.Net</span>
-            <span class="hljs-selector-class">.SecurityProtocolType</span>
-            ]::Tls12
-<span class="hljs-built_in" style="color: rgb(0, 134, 179);">iex</span>
-            (<span class="hljs-built_in" style="color: rgb(0, 134, 179);">irm</span>
-            <span class="hljs-string" style="color: rgb(221, 17, 68);">"https://github.com/nstevens1040/Execute.HttpRequest/releases/download/v1.1.8/Quick-Start.ps1"</span>
-            )
-</code></pre>
-<p>
-    <img height=188 width=800 src="https://raw.githubusercontent.com/nstevens1040/Execute.HttpRequest/master/.ignore/render1623183507697.gif"/>
-</p>
+<h1 id="execute-httprequest">Execute.HttpRequest</h1>
+<p>.NET Framework class library used the send HTTP requests and parse the response.  </p>
+<h1 id="installation">Installation</h1>
+<h2 id="quick-start">Quick Start</h2>
+<p>Make Execute.HttpRequest available in your current Windows PowerShell session using the script below.</p>
+<button style="margin-bottom: 0px;display:inline;" onclick="copyToClipboard('ps1_1');">COPY</button><span style="display: none;" id="copied">  Copied!</span>
+<pre id="ps1_1" class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; color: rgb(51, 51, 51); background: rgb(248, 248, 248);">[System<span class="hljs-selector-class">.Net</span><span class="hljs-selector-class">.ServicePointManager</span>]::SecurityProtocol = [System<span class="hljs-selector-class">.Net</span><span class="hljs-selector-class">.SecurityProtocolType</span>]::Tls12
+<span class="hljs-built_in" style="color: rgb(0, 134, 179);">iex</span> (<span class="hljs-built_in" style="color: rgb(0, 134, 179);">irm</span> <span class="hljs-string" style="color: rgb(221, 17, 68);">"https://github.com/nstevens1040/Execute.HttpRequest/releases/download/v1.1.8/Quick-Start.ps1"</span>)</code>
+</pre>
+<p><img height=188 width=800 src="https://raw.githubusercontent.com/nstevens1040/Execute.HttpRequest/master/.ignore/render1623183507697.gif"/>  </p>
 <p>Test it.</p>
-<button style="margin-bottom: 0px;display:inline;" onclick="copyToClipboard('ps1_2');">COPY</button>
-<span style="display: none;" id="copied">Copied!</span>
-<pre id="ps1_2" class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; color: rgb(51, 51, 51); background: rgb(248, 248, 248);">
-    <code class="lang-ps1">
-        <span class="hljs-variable" style="color: teal;">$r</span>
-        = [<span class="hljs-built_in">Execute</span>
-        .HttpRequest]::<span class="hljs-built_in">Send</span>
-        (<span class="hljs-string" style="color: rgb(221, 17, 68);">"https://nstevens1040.github.io/Execute.HttpRequest/"</span>
-        )
-<span class="hljs-variable" style="color: teal;">$r</span>
-        .ResponseText
-    </code>
+<button style="margin-bottom: 0px;display:inline;" onclick="copyToClipboard('ps1_2');">COPY</button><span style="display: none;" id="copied">  Copied!</span>
+<pre id="ps1_2" class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; color: rgb(51, 51, 51); background: rgb(248, 248, 248);"><code class="lang-ps1"><span class="hljs-variable" style="color: teal;">$r</span> = [<span class="hljs-built_in">Execute</span>.HttpRequest]::<span class="hljs-built_in">Send</span>(<span class="hljs-string" style="color: rgb(221, 17, 68);">"https://nstevens1040.github.io/Execute.HttpRequest/"</span>)
+<span class="hljs-variable" style="color: teal;">$r</span>.ResponseText</code>
 </pre>
 <p>This should output the response text from nstevens1040.github.io/Execute.HttpRequest.  </p>
-<p>
-    <img height=436 width=800 src="https://raw.githubusercontent.com/nstevens1040/Execute.HttpRequest/master/.ignore/render1623185483992.gif"/>
-</p>
+<p><img height=436 width=800 src="https://raw.githubusercontent.com/nstevens1040/Execute.HttpRequest/master/.ignore/render1623185483992.gif"/></p>
 <h2 id="-net-framework-project-in-visual-studio">.NET Framework project in Visual Studio</h2>
-<p>
-    Clone the repository and build it in Visual Studio. It will create the library file, <strong>Execute.HttpRequest.dll</strong>
-    in <code style="font-family: Consolas, 'Courier New',Courier,Monospace; font-size:10pt; color:#000000;">.\Execute.HttpRequest\bin\Debug\Execute.HttpRequest.dll</code>
-    .<br>
-    Make a reference to <strong>Execute.HttpRequest.dll</strong>
-    and use the <strong>Send</strong>
-    method:  
-</p>
-<pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; color: rgb(51, 51, 51); background: rgb(248, 248, 248);">
-    <span class="hljs-keyword" style="color: rgb(51, 51, 51); font-weight: 700;">using</span>
-    Execute;
-<span class="hljs-keyword" style="color: rgb(51, 51, 51); font-weight: 700;">using</span>
-    System;
-<span class="hljs-keyword" style="color: rgb(51, 51, 51); font-weight: 700;">using</span>
-    System.Net;
-<span class="hljs-keyword" style="color: rgb(51, 51, 51); font-weight: 700;">using</span>
-    System.Collections.Specialized;
-<span class="hljs-keyword" style="color: rgb(51, 51, 51); font-weight: 700;">using</span>
-    System.Net.Http;
-<span class="hljs-keyword" style="color: rgb(51, 51, 51); font-weight: 700;">namespace</span>
-    <span class="hljs-title" style="color: rgb(153, 0, 0); font-weight: 700;">JustAnExample</span>
+<p>Clone the repository and build it in Visual Studio. It will create the library file, <strong>Execute.HttpRequest.dll</strong> in <code style="font-family: Consolas, 'Courier New',Courier,Monospace; font-size:10pt; color:#000000;">.\Execute.HttpRequest\bin\Debug\Execute.HttpRequest.dll</code>.<br>Make a reference to <strong>Execute.HttpRequest.dll</strong> and use the <strong>Send</strong> method:  </p>
+<pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; color: rgb(51, 51, 51); background: rgb(248, 248, 248);"><span class="hljs-keyword" style="color: rgb(51, 51, 51); font-weight: 700;">using</span> Execute;
+<span class="hljs-keyword" style="color: rgb(51, 51, 51); font-weight: 700;">using</span> System;
+<span class="hljs-keyword" style="color: rgb(51, 51, 51); font-weight: 700;">using</span> System.Net;
+<span class="hljs-keyword" style="color: rgb(51, 51, 51); font-weight: 700;">using</span> System.Collections.Specialized;
+<span class="hljs-keyword" style="color: rgb(51, 51, 51); font-weight: 700;">using</span> System.Net.Http;
+<span class="hljs-keyword" style="color: rgb(51, 51, 51); font-weight: 700;">namespace</span> <span class="hljs-title" style="color: rgb(153, 0, 0); font-weight: 700;">JustAnExample</span>
+{
+    <span class="hljs-keyword" style="color: rgb(51, 51, 51); font-weight: 700;">public</span> <span class="hljs-keyword" style="color: rgb(51, 51, 51); font-weight: 700;">class</span> <span class="hljs-title" style="color: rgb(153, 0, 0); font-weight: 700;">Test</span>
     {
-    <span class="hljs-keyword" style="color: rgb(51, 51, 51); font-weight: 700;">public</span>
-    <span class="hljs-keyword" style="color: rgb(51, 51, 51); font-weight: 700;">class</span>
-    <span class="hljs-title" style="color: rgb(153, 0, 0); font-weight: 700;">Test</span>
-    {
-        
-    <span class="hljs-function">
-        <span class="hljs-keyword" style="color: rgb(51, 51, 51); font-weight: 700;">public</span>
-        RetObject <span class="hljs-title" style="color: rgb(153, 0, 0); font-weight: 700;">Request</span>
-        (<span class="hljs-params">CookieCollection cookies, OrderedDictionary headers</span>
-        )
-        
-    </span>
-    {
+        <span class="hljs-function"><span class="hljs-keyword" style="color: rgb(51, 51, 51); font-weight: 700;">public</span> RetObject <span class="hljs-title" style="color: rgb(153, 0, 0); font-weight: 700;">Request</span>(<span class="hljs-params">CookieCollection cookies, OrderedDictionary headers</span>)
+        </span>{
             RetObject response = HttpRequest.Send(
-                <span class="hljs-string" style="color: rgb(221, 17, 68);">"https://fakedomain.com/post"</span>
-    ,
+                <span class="hljs-string" style="color: rgb(221, 17, 68);">"https://fakedomain.com/post"</span>,
                 HttpMethod.Post,
                 headers,
                 cookies,
-                <span class="hljs-string" style="color: rgb(221, 17, 68);">"application/x-www-form-urlencoded"</span>
-    ,
-                <span class="hljs-string" style="color: rgb(221, 17, 68);">"data=that &amp;i%27m=sending &amp;via=httpost"</span>
-    );
-            <span class="hljs-keyword" style="color: rgb(51, 51, 51); font-weight: 700;">return</span>
-    response;
+                <span class="hljs-string" style="color: rgb(221, 17, 68);">"application/x-www-form-urlencoded"</span>,
+                <span class="hljs-string" style="color: rgb(221, 17, 68);">"data=that&amp;i%27m=sending&amp;via=httpost"</span>
+            );
+            <span class="hljs-keyword" style="color: rgb(51, 51, 51); font-weight: 700;">return</span> response;
         }
     }
-}
-</pre>
+}</pre>
 <h2 id="windows-powershell-5-1">Windows PowerShell 5.1</h2>
 <h3 id="add-type-using-the-path-to-the-dll">Add-Type using the path to the DLL</h3>
-<p>
-    Clone the repository and build it in Visual Studio. It will create the library file, <strong>Execute.HttpRequest.dll</strong>
-    in <code style="font-family: Consolas, 'Courier New',Courier,Monospace; font-size:10pt; color:#000000;">.\Execute.HttpRequest\bin\Debug\Execute.HttpRequest.dll</code>
-    .<br>
-    Now you can use the <strong>Path</strong>
-    parameter, specifying the path to the DLL file as the parameter to Add-Type instead of TypeDefinition.  
-</p>
-<pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; color: rgb(51, 51, 51); background: rgb(248, 248, 248);">
-    <span class="hljs-built_in" style="color: rgb(0, 134, 179);">Add-Type</span>
-    -Path .\source\repos\Execute.HttpRequest\Execute.HttpRequest\bin\Debug\Execute.HttpRequest.dll
-</pre>
+<p>Clone the repository and build it in Visual Studio. It will create the library file, <strong>Execute.HttpRequest.dll</strong> in <code style="font-family: Consolas, 'Courier New',Courier,Monospace; font-size:10pt; color:#000000;">.\Execute.HttpRequest\bin\Debug\Execute.HttpRequest.dll</code>.<br>Now you can use the <strong>Path</strong> parameter, specifying the path to the DLL file as the parameter to Add-Type instead of TypeDefinition.  </p>
+<pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; color: rgb(51, 51, 51); background: rgb(248, 248, 248);"><span class="hljs-built_in" style="color: rgb(0, 134, 179);">Add-Type</span> -Path .\source\repos\Execute.HttpRequest\Execute.HttpRequest\bin\Debug\Execute.HttpRequest.dll</pre>
 <p>Either way, once the command completes, you can use the library in PowerShell like this:</p>
-<pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; color: rgb(51, 51, 51); background: rgb(248, 248, 248);">
-    <span class="hljs-variable" style="color: teal;">$re</span>
-    = [Execute.HttpRequest]::Send(
-    <span class="hljs-string" style="color: rgb(221, 17, 68);">"https://fakedomain.com/post"</span>
-    ,
+<pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; color: rgb(51, 51, 51); background: rgb(248, 248, 248);"><span class="hljs-variable" style="color: teal;">$re</span> = [Execute.HttpRequest]::Send(
+    <span class="hljs-string" style="color: rgb(221, 17, 68);">"https://fakedomain.com/post"</span>,
     [System.Net.Http.HttpMethod]::Post,
-    ([ordered]@{<span class="hljs-string" style="color: rgb(221, 17, 68);">"x-csrf-token"</span>
-    =<span class="hljs-string" style="color: rgb(221, 17, 68);">"blahblahblahfaketokenblahblah"</span>
-    }),
-    <span class="hljs-variable" style="color: teal;">$cookies</span>
-    , <span class="hljs-comment" style="color: rgb(153, 153, 136); font-style: italic;"># CookieContainer example below</span>
-    <span class="hljs-string" style="color: rgb(221, 17, 68);">"application/x-www-form-urlencoded"</span>
-    ,
-    <span class="hljs-string" style="color: rgb(221, 17, 68);">"data=that &amp;i%27m=sending &amp;via=httpost"</span>
-    )
-</pre>
+    ([ordered]@{<span class="hljs-string" style="color: rgb(221, 17, 68);">"x-csrf-token"</span>=<span class="hljs-string" style="color: rgb(221, 17, 68);">"blahblahblahfaketokenblahblah"</span>}),
+    <span class="hljs-variable" style="color: teal;">$cookies</span>, <span class="hljs-comment" style="color: rgb(153, 153, 136); font-style: italic;"># CookieContainer example below</span>
+    <span class="hljs-string" style="color: rgb(221, 17, 68);">"application/x-www-form-urlencoded"</span>,
+    <span class="hljs-string" style="color: rgb(221, 17, 68);">"data=that&amp;i%27m=sending&amp;via=httpost"</span>
+)</pre>
 <h1 id="usage">Usage</h1>
 <h2 id="positional-parameters-">Positional parameters:</h2>
 <h3 id="uri">Uri</h3>
 <table>
-    <tbody>
-        <tr>
-            <td>
-                <strong>Type</strong>
-            </td>
-            <td>System.String</td>
-        </tr>
-        <tr style="background-color: #dee6ed;">
-            <td>
-                <strong>Position</strong>
-            </td>
-            <td>0</td>
-        </tr>
-        <tr>
-            <td>
-                <strong>Purpose</strong>
-            </td>
-            <td>The full URI to the resource you are requesting.</td>
-        </tr>
-        <tr style="background-color: #dee6ed;">
-            <td>
-                <strong>Required?</strong>
-            </td>
-            <td>Yes</td>
-        </tr>
-    </tbody>
+<tbody>
+<tr>
+<td><strong>Type</strong></td>
+<td>System.String</td>
+</tr>
+<tr style="background-color: #dee6ed;">
+<td ><strong>Position</strong></td>
+<td>0</td>
+</tr>
+<tr>
+<td><strong>Purpose</strong></td>
+<td>The full URI to the resource you are requesting.</td>
+</tr>
+<tr style="background-color: #dee6ed;">
+<td><strong>Required?</strong></td>
+<td>Yes</td>
+</tr>
+</tbody>
 </table>
-<pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; color: rgb(51, 51, 51); background: rgb(248, 248, 248);">
-    <span class="hljs-keyword" style="color: rgb(51, 51, 51); font-weight: 700;">string</span>
-    uri = <span class="hljs-string" style="color: rgb(221, 17, 68);">@"https://twitter.com/sessions"</span>
-    ;
-</pre>
+<pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; color: rgb(51, 51, 51); background: rgb(248, 248, 248);"><span class="hljs-keyword" style="color: rgb(51, 51, 51); font-weight: 700;">string</span> uri = <span class="hljs-string" style="color: rgb(221, 17, 68);">@"https://twitter.com/sessions"</span>;</pre>
 <h3 id="method">Method</h3>
 <table>
-    <tbody>
-        <tr>
-            <td>
-                <strong>Type</strong>
-            </td>
-            <td>System.Net.Http.HttpMethod</td>
-        </tr>
-        <tr style="background-color: #dee6ed;">
-            <td>
-                <strong>Position</strong>
-            </td>
-            <td>1</td>
-        </tr>
-        <tr>
-            <td>
-                <strong>Purpose</strong>
-            </td>
-            <td>
-                The HTTP method you &#39;re using to send the request. Must be one of <strong>GET, POST, PUT, DELETE, TRACE, OPTIONS, or HEAD</strong>
-                .
-            </td>
-        </tr>
-        <tr style="background-color: #dee6ed;">
-            <td>
-                <strong>Required?</strong>
-            </td>
-            <td>
-                No (<strong>Defaults to GET</strong>
-                if not specified)
-            </td>
-        </tr>
-    </tbody>
+<tbody>
+<tr>
+<td><strong>Type</strong></td>
+<td>System.Net.Http.HttpMethod</td>
+</tr>
+<tr style="background-color: #dee6ed;">
+<td><strong>Position</strong></td>
+<td>1</td>
+</tr>
+<tr>
+<td><strong>Purpose</strong></td>
+<td>The HTTP method you&#39;re using to send the request. Must be one of <strong>GET, POST, PUT, DELETE, TRACE, OPTIONS, or HEAD</strong>.</td>
+</tr>
+<tr style="background-color: #dee6ed;">
+<td><strong>Required?</strong></td>
+<td>No (<strong>Defaults to GET</strong> if not specified)</td>
+</tr>
+</tbody>
 </table>
 <pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; color: rgb(51, 51, 51); background: rgb(248, 248, 248);">HttpMethod method = HttpMethod.Post;</pre>
-</code></pre><h3 id="headers">Headers</h3>
+</code></pre>
+<h3 id="headers">Headers</h3>
 <table>
-    <tbody>
-        <tr>
-            <td>
-                <strong>Type</strong>
-            </td>
-            <td>System.Collections.Specialized.OrderedDictionary</td>
-        </tr>
-        <tr style="background-color: #dee6ed;">
-            <td>
-                <strong>Position</strong>
-            </td>
-            <td>2</td>
-        </tr>
-        <tr>
-            <td>
-                <strong>Purpose</strong>
-            </td>
-            <td>
-                Http headers (<strong>not Content-*</strong>
-                ) to send along with the HTTP request.
-            </td>
-        </tr>
-        <tr style="background-color: #dee6ed;">
-            <td>
-                <strong>Required?</strong>
-            </td>
-            <td>
-                No (<strong>HTTP headers Path, User-Agent, and Content-Length are sent automatically</strong>
-                )
-            </td>
-        </tr>
-    </tbody>
+<tbody>
+<tr>
+<td><strong>Type</strong></td>
+<td>System.Collections.Specialized.OrderedDictionary</td>
+</tr>
+<tr style="background-color: #dee6ed;">
+<td><strong>Position</strong></td>
+<td>2</td>
+</tr>
+<tr>
+<td><strong>Purpose</strong></td>
+<td>Http headers (<strong>not Content-*</strong>) to send along with the HTTP request.</td>
+</tr>
+<tr style="background-color: #dee6ed;">
+<td><strong>Required?</strong></td>
+<td>No (<strong>HTTP headers Path, User-Agent, and Content-Length are sent automatically</strong>)</td>
+</tr>
+</tbody>
 </table>
-<pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; color: rgb(51, 51, 51); background: rgb(248, 248, 248);">
-    OrderedDictionary headers = <span class="hljs-keyword" style="color: rgb(51, 51, 51); font-weight: 700;">new</span>
-    OrderedDictionary();
-headers.Add(<span class="hljs-string" style="color: rgb(221, 17, 68);">"x-csrf-token"</span>
-    ,<span class="hljs-string" style="color: rgb(221, 17, 68);">"blahblahblahfaketokenblahblah"</span>
-    );
-</pre>
+<pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; color: rgb(51, 51, 51); background: rgb(248, 248, 248);">OrderedDictionary headers = <span class="hljs-keyword" style="color: rgb(51, 51, 51); font-weight: 700;">new</span> OrderedDictionary();
+headers.Add(<span class="hljs-string" style="color: rgb(221, 17, 68);">"x-csrf-token"</span>,<span class="hljs-string" style="color: rgb(221, 17, 68);">"blahblahblahfaketokenblahblah"</span>);</pre>
 <h3 id="cookies">Cookies</h3>
 <table>
-    <tbody>
-        <tr>
-            <td>
-                <strong>Type</strong>
-            </td>
-            <td>System.Net.CookieCollection</td>
-        </tr>
-        <tr style="background-color: #dee6ed;">
-            <td>
-                <strong>Position</strong>
-            </td>
-            <td>3</td>
-        </tr>
-        <tr>
-            <td>
-                <strong>Purpose</strong>
-            </td>
-            <td>CookieCollection object populated with 1 or more System.Net.Cookie objects to send along with the HTTP request.</td>
-        </tr>
-        <tr style="background-color: #dee6ed;">
-            <td>
-                <strong>Required?</strong>
-            </td>
-            <td>No</td>
-        </tr>
-    </tbody>
+<tbody>
+<tr>
+<td><strong>Type</strong></td>
+<td>System.Net.CookieCollection</td>
+</tr>
+<tr style="background-color: #dee6ed;">
+<td><strong>Position</strong></td>
+<td>3</td>
+</tr>
+<tr>
+<td><strong>Purpose</strong></td>
+<td>CookieCollection object populated with 1 or more System.Net.Cookie objects to send along with the HTTP request.</td>
+</tr>
+<tr style="background-color: #dee6ed;">
+<td><strong>Required?</strong></td>
+<td>No</td>
+</tr>
+</tbody>
 </table>
-<pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; color: rgb(51, 51, 51); background: rgb(248, 248, 248);">
-    CookieCollection cookies = <span class="hljs-keyword" style="color: rgb(51, 51, 51); font-weight: 700;">new</span>
-    CookieCollection();
-cookies.Add((<span class="hljs-keyword" style="color: rgb(51, 51, 51); font-weight: 700;">new</span>
-    Cookie(){
-    Name=<span class="hljs-string" style="color: rgb(221, 17, 68);">"MyCookieName"</span>
-    ,
-    Value=<span class="hljs-string" style="color: rgb(221, 17, 68);">"MyCookieValue"</span>
-    ,
-    Path=<span class="hljs-string" style="color: rgb(221, 17, 68);">"/"</span>
-    ,
-    Domain=<span class="hljs-string" style="color: rgb(221, 17, 68);">".fakedomain.com"</span>
-    ,
-    Expires=DateTime.Now.AddDays(<span class="hljs-number" style="color: teal;">365</span>
-    )
-}));
-</pre>
+<pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; color: rgb(51, 51, 51); background: rgb(248, 248, 248);">CookieCollection cookies = <span class="hljs-keyword" style="color: rgb(51, 51, 51); font-weight: 700;">new</span> CookieCollection();
+cookies.Add((<span class="hljs-keyword" style="color: rgb(51, 51, 51); font-weight: 700;">new</span> Cookie(){
+    Name=<span class="hljs-string" style="color: rgb(221, 17, 68);">"MyCookieName"</span>,
+    Value=<span class="hljs-string" style="color: rgb(221, 17, 68);">"MyCookieValue"</span>,
+    Path=<span class="hljs-string" style="color: rgb(221, 17, 68);">"/"</span>,
+    Domain=<span class="hljs-string" style="color: rgb(221, 17, 68);">".fakedomain.com"</span>,
+    Expires=DateTime.Now.AddDays(<span class="hljs-number" style="color: teal;">365</span>)
+}));</pre>
 <h3 id="content-type">Content-Type</h3>
 <table>
-    <tbody>
-        <tr>
-            <td>
-                <strong>Type</strong>
-            </td>
-            <td>System.String</td>
-        </tr>
-        <tr style="background-color: #dee6ed;">
-            <td>
-                <strong>Position</strong>
-            </td>
-            <td>4</td>
-        </tr>
-        <tr>
-            <td>
-                <strong>Purpose</strong>
-            </td>
-            <td>Mimetype string to include if you &#39;re sending data along with your HTTP request.</td>
-        </tr>
-        <tr style="background-color: #dee6ed;">
-            <td>
-                <strong>Required?</strong>
-            </td>
-            <td>No</td>
-        </tr>
-    </tbody>
+<tbody>
+<tr>
+<td><strong>Type</strong></td>
+<td>System.String</td>
+</tr>
+<tr style="background-color: #dee6ed;">
+<td><strong>Position</strong></td>
+<td>4</td>
+</tr>
+<tr>
+<td><strong>Purpose</strong></td>
+<td>Mimetype string to include if you&#39;re sending data along with your HTTP request.</td>
+</tr>
+<tr style="background-color: #dee6ed;">
+<td><strong>Required?</strong></td>
+<td>No</td>
+</tr>
+</tbody>
 </table>
-<pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; color: rgb(51, 51, 51); background: rgb(248, 248, 248);">
-    <span class="hljs-keyword" style="color: rgb(51, 51, 51); font-weight: 700;">string</span>
-    contentType = <span class="hljs-string" style="color: rgb(221, 17, 68);">@"application/x-www-form-urlencoded"</span>
-    ;
-</pre>
+<pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; color: rgb(51, 51, 51); background: rgb(248, 248, 248);"><span class="hljs-keyword" style="color: rgb(51, 51, 51); font-weight: 700;">string</span> contentType = <span class="hljs-string" style="color: rgb(221, 17, 68);">@"application/x-www-form-urlencoded"</span>;</pre>
 <h3 id="body">Body</h3>
 <table>
-    <tbody>
-        <tr>
-            <td>
-                <strong>Type</strong>
-            </td>
-            <td>System.String</td>
-        </tr>
-        <tr style="background-color: #dee6ed;">
-            <td>
-                <strong>Position</strong>
-            </td>
-            <td>5</td>
-        </tr>
-        <tr>
-            <td>
-                <strong>Purpose</strong>
-            </td>
-            <td>
-                Data that you &#39;re sending along with your HTTP request. <strong>HTTP method must be either POST or PUT.</strong>
-            </td>
-        </tr>
-        <tr style="background-color: #dee6ed;">
-            <td>
-                <strong>Required?</strong>
-            </td>
-            <td>No</td>
-        </tr>
-    </tbody>
+<tbody>
+<tr>
+<td><strong>Type</strong></td>
+<td>System.String</td>
+</tr>
+<tr style="background-color: #dee6ed;">
+<td><strong>Position</strong></td>
+<td>5</td>
+</tr>
+<tr>
+<td><strong>Purpose</strong></td>
+<td>Data that you&#39;re sending along with your HTTP request. <strong>HTTP method must be either POST or PUT.</strong></td>
+</tr>
+<tr style="background-color: #dee6ed;">
+<td><strong>Required?</strong></td>
+<td>No</td>
+</tr>
+</tbody>
 </table>
-<pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; color: rgb(51, 51, 51); background: rgb(248, 248, 248);">
-    <span class="hljs-keyword" style="color: rgb(51, 51, 51); font-weight: 700;">string</span>
-    body = <span class="hljs-string" style="color: rgb(221, 17, 68);">@"Any=string &amp;will=do%2c &amp;so=long &amp;as=it &amp;serves=your &amp;purpose=well"</span>
-    ;
-</pre>
+<pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; color: rgb(51, 51, 51); background: rgb(248, 248, 248);"><span class="hljs-keyword" style="color: rgb(51, 51, 51); font-weight: 700;">string</span> body = <span class="hljs-string" style="color: rgb(221, 17, 68);">@"Any=string&amp;will=do%2c&amp;so=long&amp;as=it&amp;serves=your&amp;purpose=well"</span>;</pre>
 <h2 id="return-object">Return object</h2>
-<p>
-    The Send method returns and instance of an object with the typename <strong>Execute.RetObject</strong>
-    .<br>The object contains 5 properties:  
-</p>
+<p>The Send method returns and instance of an object with the typename <strong>Execute.RetObject</strong>.<br>The object contains 5 properties:  </p>
 <table>
-    <thead>
-        <tr style="background-color: #dee6ed;">
-            <th>Name</th>
-            <th>Type</th>
-            <th>Description</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>
-                <strong>CookieCollection</strong>
-            </td>
-            <td>System.Net.CookieCollection</td>
-            <td>Cookies returned from HTTP request</td>
-        </tr>
-        <tr style="background-color: #dee6ed;">
-            <td>
-                <strong>HtmlDocument</strong>
-            </td>
-            <td>System.Object</td>
-            <td>
-                HTML document parsed via <strong>HTMLFile COMObject</strong>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <strong>HttpResponseHeaders</strong>
-            </td>
-            <td>System.Collections.Specialized.OrderedDictionary</td>
-            <td>Headers returned from HTTP request</td>
-        </tr>
-        <tr style="background-color: #dee6ed;">
-            <td>
-                <strong>HttpResponseMessage</strong>
-            </td>
-            <td>System.Net.Http.HttpResponseMessage</td>
-            <td>Initial object returned from HttpClient.SendAsync()</td>
-        </tr>
-        <tr>
-            <td>
-                <strong>ResponseText</strong>
-            </td>
-            <td>System.String</td>
-            <td>Text body of the HTTP response</td>
-        </tr>
-    </tbody>
+<thead>
+<tr style="background-color: #dee6ed;">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>CookieCollection</strong></td>
+<td>System.Net.CookieCollection</td>
+<td>Cookies returned from HTTP request</td>
+</tr>
+<tr style="background-color: #dee6ed;">
+<td><strong>HtmlDocument</strong></td>
+<td>System.Object</td>
+<td>HTML document parsed via <strong>HTMLFile COMObject</strong></td>
+</tr>
+<tr>
+<td><strong>HttpResponseHeaders</strong></td>
+<td>System.Collections.Specialized.OrderedDictionary</td>
+<td>Headers returned from HTTP request</td>
+</tr>
+<tr style="background-color: #dee6ed;">
+<td><strong>HttpResponseMessage</strong></td>
+<td>System.Net.Http.HttpResponseMessage</td>
+<td>Initial object returned from HttpClient.SendAsync()</td>
+</tr>
+<tr>
+<td><strong>ResponseText</strong></td>
+<td>System.String</td>
+<td>Text body of the HTTP response</td>
+</tr>
+</tbody>
 </table>
-<p>
-    The advantage of using this library is the ability to take, for example, the CookieCollection object returned from one request and pipe those cookies into the next request.<br>To illustrate:  
-</p>
-<pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; color: rgb(51, 51, 51); background: rgb(248, 248, 248);">
-    $re = [Execute.HttpRequest]::Send(
-    <span class="hljs-string" style="color: rgb(221, 17, 68);">"https://fakedomain.com/post"</span>
-    ,
+<p>The advantage of using this library is the ability to take, for example, the CookieCollection object returned from one request and pipe those cookies into the next request.<br>To illustrate:  </p>
+<pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; color: rgb(51, 51, 51); background: rgb(248, 248, 248);">$re = [Execute.HttpRequest]::Send(
+    <span class="hljs-string" style="color: rgb(221, 17, 68);">"https://fakedomain.com/post"</span>,
     [System.Net.Http.HttpMethod]::Post,
-    ([ordered]@{<span class="hljs-string" style="color: rgb(221, 17, 68);">"x-csrf-token"</span>
-    =<span class="hljs-string" style="color: rgb(221, 17, 68);">"blahblahblahfaketokenblahblah"</span>
-    }),
+    ([ordered]@{<span class="hljs-string" style="color: rgb(221, 17, 68);">"x-csrf-token"</span>=<span class="hljs-string" style="color: rgb(221, 17, 68);">"blahblahblahfaketokenblahblah"</span>}),
     $cookies,
-    <span class="hljs-string" style="color: rgb(221, 17, 68);">"application/x-www-form-urlencoded"</span>
-    ,
-    <span class="hljs-string" style="color: rgb(221, 17, 68);">"data=that &amp;i%27m=sending &amp;via=httpost"</span>
-    )
+    <span class="hljs-string" style="color: rgb(221, 17, 68);">"application/x-www-form-urlencoded"</span>,
+    <span class="hljs-string" style="color: rgb(221, 17, 68);">"data=that&amp;i%27m=sending&amp;via=httpost"</span>
+)
 $next = [Execute.HttpRequest]::Send(
-    <span class="hljs-string" style="color: rgb(221, 17, 68);">"https://fakedomain.com/someotherresource"</span>
-    ,
+    <span class="hljs-string" style="color: rgb(221, 17, 68);">"https://fakedomain.com/someotherresource"</span>,
     [System.Net.Http.HttpMethod]::Get,
     $re.HttpResponseHeaders,
     $re.CookieCollection
-)
-</pre>
-</body>
+)</pre>
+    </body>
 </html>
