@@ -43,8 +43,6 @@ deploy:
     draft: false
     prerelease: false
     skip_tags: true
-    on:
-      branch: master
 artifacts:
   - path: quick-start.ps1
     name: QuickStart
