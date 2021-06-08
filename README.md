@@ -12,7 +12,7 @@
 Make Execute.HttpRequest available in your current Windows PowerShell session using the script below.  
 ```ps1
 [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls12
-iex (irm "https://ci.appveyor.com/api/buildjobs/k1wti53dsdv789jk/artifacts/Quick-Start.ps1")
+iex (irm "https://github.com/nstevens1040/Execute.HttpRequest/releases/download/v1.1.8/Quick-Start.ps1")
 ```  
 Test it.  
 ```ps1
