@@ -49,6 +49,7 @@ namespace Execute
     {
         public void Ctor()
         {
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
             AppDomain.CurrentDomain.AssemblyResolve += (sender, args) =>
             {
                 string resourceName = new AssemblyName(args.Name).Name + ".dll";
@@ -516,6 +517,7 @@ namespace Execute
                                 );
                                 break;
                             default:
+                                ServicePointManager.Expect100Continue = false;
                                 res = await client.SendAsync(
                                     (new HttpRequestMessage(method, uri)
                                     {
@@ -531,7 +533,22 @@ namespace Execute
                         }
                         else
                         {
-                            htmlString = res.Content.ReadAsStringAsync().Result;
+                            try
+                            {
+                                htmlString = res.Content.ReadAsStringAsync().Result;
+                            }
+                            catch
+                            {
+                                except = true;
+                            }
+                            if (except)
+                            {
+                                var responseStream = await res.Content.ReadAsStreamAsync().ConfigureAwait(false);
+                                using (var sr = new StreamReader(responseStream, Encoding.UTF8))
+                                {
+                                    htmlString = await sr.ReadToEndAsync().ConfigureAwait(false);
+                                }
+                            }
                         }
                         try
                         {
@@ -592,7 +609,22 @@ namespace Execute
                         }
                         else
                         {
-                            htmlString = res.Content.ReadAsStringAsync().Result;
+                            try
+                            {
+                                htmlString = res.Content.ReadAsStringAsync().Result;
+                            }
+                            catch
+                            {
+                                except = true;
+                            }
+                            if (except)
+                            {
+                                var responseStream = await res.Content.ReadAsStreamAsync().ConfigureAwait(false);
+                                using (var sr = new StreamReader(responseStream, Encoding.UTF8))
+                                {
+                                    htmlString = await sr.ReadToEndAsync().ConfigureAwait(false);
+                                }
+                            }
                         }
                         try
                         {
