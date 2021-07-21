@@ -36,8 +36,8 @@ deploy:
     api_key:
       secure: f+MLRpFFOj9kyNxbFyIt2n5I/dR48bmJ6qXRB/ageJ/18o61FDhu61IZgwk9KfqD
   - provider: GitHub
-    tag: v1.2.1
-    release: v1.2.1 stable
+    tag: v1.2.2
+    release: v1.2.2 stable
     description: 'Pushing Quick-Start.ps1'
     auth_token:
       secure: ElzOGqa44YRqwJ9jKgjBNDbPEmxb1Mg3I+0TxsPQg8OdUSOA8T8DwkwoKofTXMQT
