@@ -117,17 +117,8 @@ namespace Execute
                         {
                             switch (key.ToLower())
                             {
-                                case "comment":
-                                    cke.Comment = value;
-                                    break;
-                                case "commenturi":
-                                    cke.CommentUri = new Uri(value);
-                                    break;
                                 case "httponly":
                                     cke.HttpOnly = bool.Parse(value);
-                                    break;
-                                case "discard":
-                                    cke.Discard = bool.Parse(value);
                                     break;
                                 case "domain":
                                     cke.Domain = value;
@@ -138,14 +129,8 @@ namespace Execute
                                 case "path":
                                     cke.Path = value;
                                     break;
-                                case "port":
-                                    cke.Port = value;
-                                    break;
                                 case "secure":
                                     cke.Secure = bool.Parse(value);
-                                    break;
-                                case "version":
-                                    cke.Version = int.Parse(value);
                                     break;
                             }
                         }
@@ -722,7 +707,6 @@ namespace Execute
                         dom = DOMParser(htmlString);
                         retObj.HtmlDocument = dom;
                     }
-                    retObj.HtmlDocument = dom;
                     retObj.HttpResponseHeaders = httpResponseHeaders;
                     retObj.HttpResponseMessage = res;
                     break;

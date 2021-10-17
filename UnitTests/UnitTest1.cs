@@ -296,6 +296,24 @@ namespace UnitTest1
             Assert.IsTrue(r.HttpResponseMessage.StatusCode.Equals(HttpStatusCode.OK));
         }
         [TestMethod]
+        [DataRow("get")]
+        [DataRow("post")]
+        [DataRow("put")]
+        [DataRow("delete")]
+        public void TestGzip(string method)
+        {
+            OrderedDictionary h = new OrderedDictionary()
+            {
+                {"Accept-Encoding","gzip" }
+            };
+            RetObject r = Execute.HttpRequest.Send(
+                "https://nanick.org/gzip",
+                Utils.methods[method],
+                h
+            ); ;
+            Assert.IsTrue(r.HttpResponseMessage.Content.Headers.ContentEncoding.Contains("gzip"));
+        }
+        [TestMethod]
         public void TestTrace()
         {
             // FYI Although you can technically send an HTTP TRACE request with this library, I don't consider it to be fully implemented because:
