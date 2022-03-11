@@ -403,7 +403,7 @@ namespace Execute
                     retObj.HttpResponseMessage = res;
                     break;
                 case "HEAD":
-                    res = await client.SendAsync((new HttpRequestMessage(method, uri)));
+                    res = await client.SendAsync((new HttpRequestMessage(method, uri)),HttpCompletionOption.ResponseHeadersRead);
                     try
                     {
                         setCookieValue = res.Headers.GetValues("Set-Cookie").ToList();
