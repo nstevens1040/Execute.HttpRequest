@@ -7,6 +7,7 @@
 [![Monero](https://img.shields.io/badge/donate-monero-red)](https://nstevens1040.github.io/sparesomechange/)
 # Execute.HttpRequest
 .NET Framework class library used the send HTTP requests and parse the response.  
+This library uses [my fork](https://github.com/nstevens1040/AngleSharp.DOMParser) of [AngleSharp](https://github.com/AngleSharp/AngleSharp) to parse HTML strings into a document object model.  
 # Installation  
 ## Quick Start  
 Make Execute.HttpRequest available in your current Windows PowerShell session using the script below.  
