@@ -1,6 +1,6 @@
 [![Build status](https://ci.appveyor.com/api/projects/status/github/nstevens1040/Execute.HttpRequest?branch=master&svg=true)](https://ci.appveyor.com/project/nstevens1040/execute-httprequest-scamo)
 [![codecov](https://codecov.io/gh/nstevens1040/Execute.HttpRequest/branch/master/graph/badge.svg?token=M9gp01ySOr)](https://codecov.io/gh/nstevens1040/Execute.HttpRequest)
-[![MIT License](https://img.shields.io/apm/l/atomic-design-ui.svg?)](https://github.com/nstevens1040/Execute.HttpRequest/blob/master/LICENSE)
+[![MIT License](https://img.shields.io/badge/license-MIT%20License-yellow)](https://github.com/nstevens1040/Execute.HttpRequest/blob/master/LICENSE)
 [![Ko-Fi](https://img.shields.io/badge/donate-ko--fi-9cf)](https://ko-fi.com/M4M23DLL6)
 [![PayPal](https://img.shields.io/badge/donate-paypal-yellow)](https://paypal.me/nstevens312)
 [![Bitcoin](https://img.shields.io/badge/donate-bitcoin-orange)](https://nstevens1040.github.io/donthatedonate/)
