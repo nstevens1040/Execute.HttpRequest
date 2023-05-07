@@ -42,7 +42,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AngleSharp.DomParser">
-      <HintPath>..\..\Execute.HttpRequest\Execute.HttpRequest\lib\AngleSharp.DomParser.dll</HintPath>
+      <HintPath>lib\AngleSharp.DomParser.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System" />
