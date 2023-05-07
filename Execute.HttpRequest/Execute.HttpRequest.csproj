@@ -41,10 +41,9 @@
     <AssemblyOriginatorKeyFile>code_signing_2021-06-28.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.mshtml, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-      <SpecificVersion>False</SpecificVersion>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-      <HintPath>lib\Microsoft.mshtml.dll</HintPath>
+    <Reference Include="AngleSharp.DomParser">
+      <HintPath>lib\AngleSharp.DomParser.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
@@ -67,14 +66,15 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="lib\Microsoft.mshtml.dll" />
     <EmbeddedResource Include="lib\System.Web.dll" />
+    <EmbeddedResource Include="lib\AngleSharp.DomParser.dll" />
     <Content Include="packageIcon.ico" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

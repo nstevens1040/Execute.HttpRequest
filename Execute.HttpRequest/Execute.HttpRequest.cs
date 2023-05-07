@@ -11,7 +11,8 @@ using System.Collections;
 using System.Text.RegularExpressions;
 using System.IO;
 using System.IO.Compression;
-using mshtml;
+using AngleSharp;
+using AngleSharp.Dom;
 using System.Reflection;
 using System.Web;
 
@@ -34,7 +35,7 @@ namespace Execute
             get;
             set;
         }
-        public HTMLDocument HtmlDocument
+        public IDocument HtmlDocument
         {
             get;
             set;
@@ -62,14 +63,14 @@ namespace Execute
                 }
             };
         }
-        private static HTMLDocument DOMParser(string responseText)
-        {
-            HTMLDocument domobj = new HTMLDocument();
-            IHTMLDocument2 doc2 = (IHTMLDocument2)domobj;
-            doc2.write(new object[] { responseText });
-            doc2.close();
-            return domobj;
-        }
+        //private static HTMLDocument DOMParser(string responseText)
+        //{
+        //    HTMLDocument domobj = new HTMLDocument();
+        //    IHTMLDocument2 doc2 = (IHTMLDocument2)domobj;
+        //    doc2.write(new object[] { responseText });
+        //    doc2.close();
+        //    return domobj;
+        //}
         private static CookieCollection SetCookieParser(List<string> setCookie, CookieCollection cooks, CookieCollection initCookies)
         {
             List<Exception> ex = new List<Exception>();
@@ -249,7 +250,7 @@ namespace Execute
             CookieCollection rCookies = new CookieCollection();
             List<string> setCookieValue = new List<string>();
             CookieContainer coo = new CookieContainer();
-            dynamic dom = new object();
+            IDocument dom;
             string htmlString = String.Empty;
             if (method == null)
             {
@@ -346,7 +347,7 @@ namespace Execute
                     rCookies = SetCookieParser(setCookieValue, responseCookies, cookies);
                     if (!String.IsNullOrEmpty(htmlString))
                     {
-                        dom = DOMParser(htmlString);
+                        dom = AngleSharp.DomParser.GetDomDocument(htmlString);
                         retObj.HtmlDocument = dom;
                     }
                     retObj.HttpResponseHeaders = httpResponseHeaders;
@@ -396,7 +397,7 @@ namespace Execute
                     rCookies = SetCookieParser(setCookieValue, responseCookies, cookies);
                     if (!String.IsNullOrEmpty(htmlString))
                     {
-                        dom = DOMParser(htmlString);
+                        dom = AngleSharp.DomParser.GetDomDocument(htmlString);
                         retObj.HtmlDocument = dom;
                     }
                     retObj.HttpResponseHeaders = httpResponseHeaders;
@@ -452,7 +453,7 @@ namespace Execute
                     rCookies = SetCookieParser(setCookieValue, responseCookies, cookies);
                     if (!String.IsNullOrEmpty(htmlString))
                     {
-                        dom = DOMParser(htmlString);
+                        dom = AngleSharp.DomParser.GetDomDocument(htmlString);
                         retObj.HtmlDocument = dom;
                     }
                     retObj.HttpResponseHeaders = httpResponseHeaders;
@@ -630,7 +631,7 @@ namespace Execute
                     rCookies = SetCookieParser(setCookieValue, responseCookies, cookies);
                     if (!String.IsNullOrEmpty(htmlString))
                     {
-                        dom = DOMParser(htmlString);
+                        dom = AngleSharp.DomParser.GetDomDocument(htmlString);
                         retObj.HtmlDocument = dom;
                     }
                     retObj.HttpResponseHeaders = httpResponseHeaders;
@@ -704,7 +705,7 @@ namespace Execute
                     rCookies = SetCookieParser(setCookieValue, responseCookies, cookies);
                     if (!String.IsNullOrEmpty(htmlString))
                     {
-                        dom = DOMParser(htmlString);
+                        dom = AngleSharp.DomParser.GetDomDocument(htmlString);
                         retObj.HtmlDocument = dom;
                     }
                     retObj.HttpResponseHeaders = httpResponseHeaders;
@@ -739,7 +740,7 @@ namespace Execute
                     rCookies = SetCookieParser(setCookieValue, responseCookies, cookies);
                     if (!String.IsNullOrEmpty(htmlString))
                     {
-                        dom = DOMParser(htmlString);
+                        dom = AngleSharp.DomParser.GetDomDocument(htmlString);
                         retObj.HtmlDocument = dom;
                     }
                     retObj.HttpResponseHeaders = httpResponseHeaders;
