@@ -159,13 +159,13 @@ string filepath = Environment.GetEnvironmentVariable(@"userprofile") + "\\file.t
 The Send method returns and instance of an object with the typename **Execute.RetObject**.  
 The object contains 5 properties:  
 
-| Name                     |  Type                                              |  Description                                           |
-|--------------------------|----------------------------------------------------|--------------------------------------------------------|
-| **CookieCollection**     |  System.Net.CookieCollection                       |  Cookies returned from HTTP request                    |
-| **HtmlDocument**         |  System.Object                                     |  HTML document parsed via mshtml.HTMLDocumentClass     |
-| **HttpResponseHeaders**  |  System.Collections.Specialized.OrderedDictionary  |  Headers returned from HTTP request                    |
-| **HttpResponseMessage**  |  System.Net.Http.HttpResponseMessage               |  Initial object returned from HttpClient.SendAsync()   | 
-| **ResponseText**         |  System.String                                     |  Text body of the HTTP response                        |  
+| Name                     |  Type                                              |  Description                                               |
+|--------------------------|----------------------------------------------------|------------------------------------------------------------|
+| **CookieCollection**     |  System.Net.CookieCollection                       |  Cookies returned from HTTP request                        |
+| **HtmlDocument**         |  System.Object                                     |  HTML document parsed via AngleSharp.Html.Dom.HtmlDocument |
+| **HttpResponseHeaders**  |  System.Collections.Specialized.OrderedDictionary  |  Headers returned from HTTP request                        |
+| **HttpResponseMessage**  |  System.Net.Http.HttpResponseMessage               |  Initial object returned from HttpClient.SendAsync()       | 
+| **ResponseText**         |  System.String                                     |  Text body of the HTTP response                            |  
   
 The advantage of using this library is the ability to take, for example, the CookieCollection object returned from one request and pipe those cookies into the next request.  
 To illustrate:  
