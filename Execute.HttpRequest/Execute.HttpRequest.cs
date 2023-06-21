@@ -1,23 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.Specialized;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Net;
-using System.Collections;
-using System.Text.RegularExpressions;
-using System.IO;
-using System.IO.Compression;
-using AngleSharp;
-using AngleSharp.Dom;
-using System.Reflection;
-using System.Web;
-
-namespace Execute
+﻿namespace Execute
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Collections.Specialized;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using System.Net.Http;
+    using System.Net.Http.Headers;
+    using System.Net;
+    using System.Collections;
+    using System.Text.RegularExpressions;
+    using System.IO;
+    using System.IO.Compression;
+    using AngleSharp;
+    using AngleSharp.Dom;
+    using System.Reflection;
+    using System.Web;
     public class RetObject
     {
         public string ResponseText
@@ -48,7 +47,7 @@ namespace Execute
     }
     public class Utils
     {
-        public void Ctor()
+        public Utils()
         {
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
             AppDomain.CurrentDomain.AssemblyResolve += (sender, args) =>
@@ -760,7 +759,6 @@ namespace Execute
         public static RetObject Send(string uri, HttpMethod method = null, OrderedDictionary headers = null, CookieCollection cookies = null, string contentType = null, string body = null,string filepath=null)
         {
             Utils utils = new Utils();
-            utils.Ctor();
             Task<RetObject> r = utils.SendHttp(uri, method, headers, cookies, contentType, body, filepath);
             return r.Result;
         }

@@ -1,40 +1,25 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using Execute;
-using AngleSharp;
-using AngleSharp.Dom;
-using System.Collections.Specialized;
-using System.Net.Http;
-using System.Reflection;
-using System.Text;
-using System.Text.Json;
-using System.Text.RegularExpressions;
-using System.Collections.Generic;
-using System.Net;
-using System.IO;
-using System.Threading.Tasks;
-using System.Linq;
-using System.Collections;
-
-namespace UnitTest1
+﻿namespace UnitTest1
 {
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using System;
+    using Execute;
+    using AngleSharp;
+    using AngleSharp.Dom;
+    using System.Collections.Specialized;
+    using System.Net.Http;
+    using System.Reflection;
+    using System.Text;
+    using System.Text.Json;
+    using System.Text.RegularExpressions;
+    using System.Collections.Generic;
+    using System.Net;
+    using System.IO;
+    using System.Threading.Tasks;
+    using System.Linq;
+    using System.Collections;
     public class Utils
     {
         public Utils()
-        {
-            AppDomain.CurrentDomain.AssemblyResolve += (sender, args) =>
-            {
-                string resourceName = new AssemblyName(args.Name).Name + ".dll";
-                string resource = Array.Find(this.GetType().Assembly.GetManifestResourceNames(), element => element.EndsWith(resourceName));
-                using (var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(resource))
-                {
-                    Byte[] assemblyData = new Byte[stream.Length];
-                    stream.Read(assemblyData, 0, assemblyData.Length);
-                    return Assembly.Load(assemblyData);
-                }
-            };
-        }
-        public void Ctor()
         {
             AppDomain.CurrentDomain.AssemblyResolve += (sender, args) =>
             {
@@ -100,7 +85,6 @@ namespace UnitTest1
             include_payload.Add("post");
             include_payload.Add("put");
             Utils jsonParser = new Utils();
-            jsonParser.Ctor();
             string guid = Guid.NewGuid().ToString();
             string cookie_value = Guid.NewGuid().ToString();
             CookieCollection cc = new CookieCollection()
@@ -212,7 +196,6 @@ namespace UnitTest1
         public void MultipartFormData()
         {
             Utils jsonParser = new Utils();
-            jsonParser.Ctor();
             string readmefile = Directory.GetCurrentDirectory() + "\\..\\..\\..\\Execute.HttpRequest\\readme.txt";
             string control_compare = File.ReadAllText(readmefile, Encoding.UTF8);
             RetObject r1 = Execute.HttpRequest.Send(
@@ -311,14 +294,12 @@ namespace UnitTest1
         public void MakeUtils()
         {
             Execute.Utils utils = new Execute.Utils();
-            utils.Ctor();
             Assert.IsInstanceOfType(utils, typeof(Execute.Utils));
         }
         [TestMethod]
         public void TestSendHttp()
         {
             Execute.Utils utils = new Execute.Utils();
-            utils.Ctor();
             Task<RetObject> t = utils.SendHttp(project_uri);
             Assert.IsInstanceOfType(t, typeof(Task<RetObject>));
             RetObject r = t.Result;
