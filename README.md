@@ -1,10 +1,10 @@
 [![Build status](https://ci.appveyor.com/api/projects/status/github/nstevens1040/Execute.HttpRequest?branch=master&svg=true)](https://ci.appveyor.com/project/nstevens1040/execute-httprequest-scamo)
 [![codecov](https://codecov.io/gh/nstevens1040/Execute.HttpRequest/branch/master/graph/badge.svg?token=M9gp01ySOr)](https://codecov.io/gh/nstevens1040/Execute.HttpRequest)
 [![MIT License](https://img.shields.io/badge/license-MIT%20License-yellow)](https://github.com/nstevens1040/Execute.HttpRequest/blob/master/LICENSE)
-[![Ko-Fi](https://img.shields.io/badge/donate-ko--fi-9cf)](https://ko-fi.com/M4M23DLL6)
-[![PayPal](https://img.shields.io/badge/donate-paypal-yellow)](https://paypal.me/nstevens312)
-[![Bitcoin](https://img.shields.io/badge/donate-bitcoin-orange)](https://nstevens1040.github.io/donthatedonate/)
-[![Monero](https://img.shields.io/badge/donate-monero-red)](https://nstevens1040.github.io/sparesomechange/)
+[![Ko-Fi](https://img.shields.io/badge/donate-ko--fi-9cf?logo=ko-fi)](https://ko-fi.com/M4M23DLL6)
+[![PayPal](https://img.shields.io/badge/donate-paypal-blue?logo=paypal)](https://paypal.me/nstevens312)
+[![Bitcoin](https://img.shields.io/badge/donate-bitcoin-orange?logo=bitcoin)](https://nstevens1040.github.io/donthatedonate/)
+[![Monero](https://img.shields.io/badge/donate-monero-red?logo=monero)](https://nstevens1040.github.io/sparesomechange/)
 # Execute.HttpRequest
 .NET Framework class library used the send HTTP requests and parse the response.  
 This library uses [my fork](https://github.com/nstevens1040/AngleSharp.DOMParser) of [AngleSharp](https://github.com/AngleSharp/AngleSharp) to parse HTML strings into a document object model.  
