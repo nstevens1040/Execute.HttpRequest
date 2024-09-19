@@ -6,6 +6,7 @@
 [![Bitcoin](https://img.shields.io/badge/donate-bitcoin-orange?logo=bitcoin)](https://nstevens1040.github.io/donthatedonate/)
 [![Monero](https://img.shields.io/badge/donate-monero-red?logo=monero)](https://nstevens1040.github.io/sparesomechange/)
 # Execute.HttpRequest
+[View the Html version of this README](https://nstevens1040.github.io/Execute.HttpRequest)  
 .NET Framework class library used the send HTTP requests and parse the response.  
 This library uses [my fork](https://github.com/nstevens1040/AngleSharp.DOMParser) of [AngleSharp](https://github.com/AngleSharp/AngleSharp) to parse HTML strings into a document object model.  
 # Installation  
