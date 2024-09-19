@@ -16,7 +16,7 @@ Make Execute.HttpRequest available in your current Windows PowerShell session us
 iex (irm (irm "https://api.github.com/repos/nstevens1040/Execute.HttpRequest/releases/latest").assets[0].browser_download_url)
 ```  
   
-<img height=188 width=800 src="https://raw.githubusercontent.com/nstevens1040/Execute.HttpRequest/master/.ignore/render1623183507697.gif"/>  
+<img height=188 width=800 src="https://raw.githubusercontent.com/nstevens1040/Execute.HttpRequest/master/.ignore/xhr.gif"/>  
   
 Test it.  
 ```ps1
