@@ -70,153 +70,251 @@
         //    doc2.close();
         //    return domobj;
         //}
-        private static CookieCollection SetCookieParser(List<string> setCookie, CookieCollection cooks, CookieCollection initCookies)
+        private static CookieCollection SetCookieParser(String domain, List<string> setCookieHeader, CookieCollection new_collection, CookieCollection previousCookies)
         {
-            List<Exception> ex = new List<Exception>();
-            List<Hashtable> rckevalues = new List<Hashtable>();
-            List<Hashtable> ckevalues = new List<Hashtable>();
-            List<Cookie> ckeList = new List<Cookie>();
-            if (initCookies != null)
+            Cookie[] cks0 = new Cookie[new_collection.Count];
+            new_collection.CopyTo(cks0, 0);
+            for (int a = 0; a < setCookieHeader.Count; a++)
             {
-                for (int i = 0; i < initCookies.Count; i++)
+                string[] cookie_strings = setCookieHeader[a].Split(';');
+                Cookie cookie = new Cookie();
+                for (int i = 0; i < cookie_strings.Count(); i++)
                 {
-                    ckeList.Add(initCookies[i]);
-                    Hashtable h = new Hashtable();
-                    h.Add(initCookies[i].Name, initCookies[i].Value);
-                    ckevalues.Add(h);
-                }
-            }
-            try
-            {
-
-                List<string> rckes = new List<string>();
-                for (int i = 0; i < cooks.Count; i++)
-                {
-                    rckes.Add(cooks[i].Name);
-                }
-                foreach (string set in setCookie)
-                {
-                    Cookie cke = new Cookie();
-                    for (int i = 0; i < set.Split(';').ToList().Count; i++)
+                    string kvp = cookie_strings[i].Trim();
+                    if (i == 0)
                     {
-                        List<string> v = new List<string>();
-                        string item = set.Split(';').ToList()[i];
-                        for (int ii = 1; ii < item.Split('=').ToList().Count; ii++)
-                        {
-                            v.Add(item.Split('=')[ii]);
-                        }
-                        string va = String.Join('='.ToString(), v);
-                        string key = new Regex(@"^(\s*)").Replace(item.Split('=').ToList()[0], "");
-                        string value = new Regex(@"^(\s*)").Replace(va, "");
-                        if (i == 0)
-                        {
-                            cke.Name = key;
-                            cke.Value = value;
-                        }
-                        else
-                        {
-                            switch (key.ToLower())
-                            {
-                                case "httponly":
-                                    cke.HttpOnly = bool.Parse(value);
-                                    break;
-                                case "domain":
-                                    cke.Domain = value;
-                                    break;
-                                case "expires":
-                                    cke.Expires = DateTime.Parse(value);
-                                    break;
-                                case "path":
-                                    cke.Path = value;
-                                    break;
-                                case "secure":
-                                    cke.Secure = bool.Parse(value);
-                                    break;
-                            }
-                        }
-                        if (!rckes.Contains(cke.Name))
-                        {
-                            cooks.Add(cke);
-                        }
-                        else
-                        {
-                            CookieCollection tempRCkes = new CookieCollection();
-                            for (int ii = 0; ii < cooks.Count; ii++)
-                            {
-                                Cookie current = cooks[ii];
-                                if (!current.Name.Equals(cke.Name))
-                                {
-                                    tempRCkes.Add(current);
-                                }
-                            }
-                            tempRCkes.Add(cke);
-                            cooks = new CookieCollection();
-                            for (int ii = 0; ii < tempRCkes.Count; ii++)
-                            {
-                                cooks.Add(tempRCkes[ii]);
-                            }
-                            rckes = new List<string>();
-                            for (int ii = 0; ii < cooks.Count; ii++)
-                            {
-                                rckes.Add(cooks[ii].Name);
-                            }
-                        }
-                    }
-                }
-                if (cooks != null)
-                {
-                    for (int i = 0; i < cooks.Count; i++)
-                    {
-                        Hashtable h = new Hashtable();
-                        h.Add(cooks[i].Name, cooks[i].Value);
-                        rckevalues.Add(h);
-                    }
-                }
-                if (ckevalues != null)
-                {
-                    if (rckevalues.Count > 0)
-                    {
-                        List<string> rNames = new List<string>();
-                        List<string> rValue = new List<string>();
-                        for (int i = 0; i < rckevalues.Count; i++)
-                        {
-                            string rcken = rckevalues[i].Keys.ToString();
-                            string rckev = rckevalues[i].Values.ToString();
-                            rNames.Add(rcken);
-                            rValue.Add(rckev);
-                        }
-                        for (int i = 0; i < ckevalues.Count; i++)
-                        {
-                            string ckeName = ckevalues[i].Keys.ToString();
-                            string ckeValu = ckevalues[i].Values.ToString();
-                            if (!rValue.Contains(ckeValu))
-                            {
-                                if (!rNames.Contains(ckeName))
-                                {
-                                    cooks.Add(ckeList.Where(item => item.Name.Equals(ckeName)).FirstOrDefault());
-                                }
-                            }
-                            else
-                            {
-                                if (!rNames.Contains(ckeName))
-                                {
-                                    cooks.Add(ckeList.Where(item => item.Name.Equals(ckeName)).FirstOrDefault());
-                                }
-                            }
-                        }
+                        cookie.Name = kvp.Split('=')[0].Trim();
+                        cookie.Value = String.Join('='.ToString(), kvp.Split('=').Skip(1)).Trim();
                     }
                     else
                     {
-                        ckeList.ForEach(i => cooks.Add(i));
+                        string property = kvp.Split('=')[0].Trim().ToLower();
+                        string value = String.Join('='.ToString(), kvp.Split('=').Skip(1)).Trim();
+                        switch (property)
+                        {
+                            case "comment":
+                                cookie.Comment = value;
+                                break;
+                            case "commenturi":
+                                try
+                                {
+                                    cookie.CommentUri = new Uri(value);
+                                }
+                                catch { }
+                                break;
+                            case "discard":
+                                cookie.Discard = true;
+                                break;
+                            case "domain":
+                                cookie.Domain = value;
+                                break;
+                            case "expires":
+                                cookie.Expires = DateTime.Parse(value);
+                                break;
+                            case "httponly":
+                                cookie.HttpOnly = true;
+                                break;
+                            case "path":
+                                cookie.Path = value;
+                                break;
+                            case "port":
+                                cookie.Port = value;
+                                break;
+                            case "secure":
+                                cookie.Secure = true;
+                                break;
+                            case "version":
+                                try
+                                {
+                                    cookie.Version = Int32.Parse(value);
+                                }
+                                catch { }                                
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                }
+                if(String.IsNullOrEmpty(cookie.Domain))
+                {
+                    cookie.Domain = domain;
+                }
+                if(String.IsNullOrEmpty(cookie.Path))
+                {
+                    cookie.Path = "/";
+                }
+                if (cks0.Where(ck =>
+                {
+                    return (ck.Name.Equals(cookie.Name));
+                }).Count() == 0)
+                {
+                    new_collection.Add(cookie);
+                }
+            }
+            if(previousCookies != null)
+            {
+                Cookie[] ckse = new Cookie[new_collection.Count];
+                new_collection.CopyTo(ckse, 0);
+                foreach (Cookie pcookie in previousCookies)
+                {
+                    if (ckse.Where(ck =>
+                    {
+                        return (ck.Name.Equals(pcookie.Name));
+                    }).Count() == 0)
+                    {
+                        new_collection.Add(pcookie);
                     }
                 }
             }
-            catch (Exception e)
-            {
-                ex.Add(e);
-            }
-            return cooks;
+            return new_collection;
         }
+        //private static CookieCollection SetCookieParser(List<string> setCookie, CookieCollection cooks, CookieCollection initCookies)
+        //{
+        //    List<Exception> ex = new List<Exception>();
+        //    List<Hashtable> rckevalues = new List<Hashtable>();
+        //    List<Hashtable> ckevalues = new List<Hashtable>();
+        //    List<Cookie> ckeList = new List<Cookie>();
+        //    if (initCookies != null)
+        //    {
+        //        for (int i = 0; i < initCookies.Count; i++)
+        //        {
+        //            ckeList.Add(initCookies[i]);
+        //            Hashtable h = new Hashtable();
+        //            h.Add(initCookies[i].Name, initCookies[i].Value);
+        //            ckevalues.Add(h);
+        //        }
+        //    }
+        //    try
+        //    {
+
+        //        List<string> rckes = new List<string>();
+        //        for (int i = 0; i < cooks.Count; i++)
+        //        {
+        //            rckes.Add(cooks[i].Name);
+        //        }
+        //        foreach (string set in setCookie)
+        //        {
+        //            Cookie cke = new Cookie();
+        //            for (int i = 0; i < set.Split(';').ToList().Count; i++)
+        //            {
+        //                List<string> v = new List<string>();
+        //                string item = set.Split(';').ToList()[i];
+        //                for (int ii = 1; ii < item.Split('=').ToList().Count; ii++)
+        //                {
+        //                    v.Add(item.Split('=')[ii]);
+        //                }
+        //                string va = String.Join('='.ToString(), v);
+        //                string key = new Regex(@"^(\s*)").Replace(item.Split('=').ToList()[0], "");
+        //                string value = new Regex(@"^(\s*)").Replace(va, "");
+        //                if (i == 0)
+        //                {
+        //                    cke.Name = key;
+        //                    cke.Value = value;
+        //                }
+        //                else
+        //                {
+        //                    switch (key.ToLower())
+        //                    {
+        //                        case "httponly":
+        //                            cke.HttpOnly = bool.Parse(value);
+        //                            break;
+        //                        case "domain":
+        //                            cke.Domain = value;
+        //                            break;
+        //                        case "expires":
+        //                            cke.Expires = DateTime.Parse(value);
+        //                            break;
+        //                        case "path":
+        //                            cke.Path = value;
+        //                            break;
+        //                        case "secure":
+        //                            cke.Secure = bool.Parse(value);
+        //                            break;
+        //                    }
+        //                }
+        //                if (!rckes.Contains(cke.Name))
+        //                {
+        //                    cooks.Add(cke);
+        //                }
+        //                else
+        //                {
+        //                    CookieCollection tempRCkes = new CookieCollection();
+        //                    for (int ii = 0; ii < cooks.Count; ii++)
+        //                    {
+        //                        Cookie current = cooks[ii];
+        //                        if (!current.Name.Equals(cke.Name))
+        //                        {
+        //                            tempRCkes.Add(current);
+        //                        }
+        //                    }
+        //                    tempRCkes.Add(cke);
+        //                    cooks = new CookieCollection();
+        //                    for (int ii = 0; ii < tempRCkes.Count; ii++)
+        //                    {
+        //                        cooks.Add(tempRCkes[ii]);
+        //                    }
+        //                    rckes = new List<string>();
+        //                    for (int ii = 0; ii < cooks.Count; ii++)
+        //                    {
+        //                        rckes.Add(cooks[ii].Name);
+        //                    }
+        //                }
+        //            }
+        //        }
+        //        if (cooks != null)
+        //        {
+        //            for (int i = 0; i < cooks.Count; i++)
+        //            {
+        //                Hashtable h = new Hashtable();
+        //                h.Add(cooks[i].Name, cooks[i].Value);
+        //                rckevalues.Add(h);
+        //            }
+        //        }
+        //        if (ckevalues != null)
+        //        {
+        //            if (rckevalues.Count > 0)
+        //            {
+        //                List<string> rNames = new List<string>();
+        //                List<string> rValue = new List<string>();
+        //                for (int i = 0; i < rckevalues.Count; i++)
+        //                {
+        //                    string rcken = rckevalues[i].Keys.ToString();
+        //                    string rckev = rckevalues[i].Values.ToString();
+        //                    rNames.Add(rcken);
+        //                    rValue.Add(rckev);
+        //                }
+        //                for (int i = 0; i < ckevalues.Count; i++)
+        //                {
+        //                    string ckeName = ckevalues[i].Keys.ToString();
+        //                    string ckeValu = ckevalues[i].Values.ToString();
+        //                    if (!rValue.Contains(ckeValu))
+        //                    {
+        //                        if (!rNames.Contains(ckeName))
+        //                        {
+        //                            cooks.Add(ckeList.Where(item => item.Name.Equals(ckeName)).FirstOrDefault());
+        //                        }
+        //                    }
+        //                    else
+        //                    {
+        //                        if (!rNames.Contains(ckeName))
+        //                        {
+        //                            cooks.Add(ckeList.Where(item => item.Name.Equals(ckeName)).FirstOrDefault());
+        //                        }
+        //                    }
+        //                }
+        //            }
+        //            else
+        //            {
+        //                ckeList.ForEach(i => cooks.Add(i));
+        //            }
+        //        }
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        ex.Add(e);
+        //    }
+        //    return cooks;
+        //}
         public static void CopyTo(Stream src, Stream dest)
         {
             byte[] bytes = new byte[4096];
@@ -247,7 +345,7 @@
             OrderedDictionary httpResponseHeaders = new OrderedDictionary();
             CookieCollection responseCookies;
             CookieCollection rCookies = new CookieCollection();
-            List<string> setCookieValue = new List<string>();
+            //List<string> setCookieValue = new List<string>();
             CookieContainer coo = new CookieContainer();
             IDocument dom;
             string htmlString = String.Empty;
@@ -263,7 +361,8 @@
                 MaxAutomaticRedirections = Int32.MaxValue,
                 MaxConnectionsPerServer = Int32.MaxValue,
                 MaxResponseHeadersLength = Int32.MaxValue,
-                SslProtocols = System.Security.Authentication.SslProtocols.Tls12
+                SslProtocols = System.Security.Authentication.SslProtocols.Tls12,
+                UseCookies = true,
             };
             HttpClient client = new HttpClient(handle);
             if (!client.DefaultRequestHeaders.Contains("User-Agent"))
@@ -310,11 +409,21 @@
                 while (cnume.MoveNext())
                 {
                     Cookie cook = (Cookie)cnume.Current;
+                    if (String.IsNullOrEmpty(cook.Domain))
+                    {
+                        cook.Domain = new Uri(uri).Host;
+                    }
+                    if (String.IsNullOrEmpty(cook.Path))
+                    {
+                        cook.Path = "/";
+                    }
                     coo.Add(cook);
                 }
                 handle.CookieContainer = coo;
             }
             bool except = false;
+            List<string> setCookieValue = new List<String>();
+            string domain = new Uri(uri).Host;
             switch (method.ToString())
             {
                 case "DELETE":
@@ -334,6 +443,8 @@
                     }
                     catch
                     { }
+                    responseCookies = handle.CookieContainer.GetCookies(new Uri(uri));
+                    rCookies = SetCookieParser(domain,setCookieValue, responseCookies, cookies);
                     res.Headers.ToList().ForEach((i) =>
                     {
                         httpResponseHeaders.Add(i.Key, i.Value);
@@ -342,8 +453,7 @@
                     {
                         httpResponseHeaders.Add(i.Key, i.Value);
                     });
-                    responseCookies = handle.CookieContainer.GetCookies(new Uri(uri));
-                    rCookies = SetCookieParser(setCookieValue, responseCookies, cookies);
+
                     if (!String.IsNullOrEmpty(htmlString))
                     {
                         dom = AngleSharp.DomParser.GetDomDocument(htmlString);
@@ -384,6 +494,8 @@
                     }
                     catch
                     { }
+                    responseCookies = handle.CookieContainer.GetCookies(new Uri(uri));
+                    rCookies = SetCookieParser(domain,setCookieValue, responseCookies, cookies);
                     res.Headers.ToList().ForEach((i) =>
                     {
                         httpResponseHeaders.Add(i.Key, i.Value);
@@ -392,8 +504,6 @@
                     {
                         httpResponseHeaders.Add(i.Key, i.Value);
                     });
-                    responseCookies = handle.CookieContainer.GetCookies(new Uri(uri));
-                    rCookies = SetCookieParser(setCookieValue, responseCookies, cookies);
                     if (!String.IsNullOrEmpty(htmlString))
                     {
                         dom = AngleSharp.DomParser.GetDomDocument(htmlString);
@@ -410,6 +520,8 @@
                     }
                     catch
                     { }
+                    responseCookies = handle.CookieContainer.GetCookies(new Uri(uri));
+                    rCookies = SetCookieParser(domain,setCookieValue, responseCookies, cookies);
                     res.Headers.ToList().ForEach((i) =>
                     {
                         httpResponseHeaders.Add(i.Key, i.Value);
@@ -418,8 +530,6 @@
                     {
                         httpResponseHeaders.Add(i.Key, i.Value);
                     });
-                    responseCookies = handle.CookieContainer.GetCookies(new Uri(uri));
-                    rCookies = SetCookieParser(setCookieValue, responseCookies, cookies);
                     retObj.HttpResponseHeaders = httpResponseHeaders;
                     retObj.HttpResponseMessage = res;
                     break;
@@ -440,6 +550,8 @@
                     }
                     catch
                     { }
+                    responseCookies = handle.CookieContainer.GetCookies(new Uri(uri));
+                    rCookies = SetCookieParser(domain,setCookieValue, responseCookies, cookies);
                     res.Headers.ToList().ForEach((i) =>
                     {
                         httpResponseHeaders.Add(i.Key, i.Value);
@@ -448,8 +560,6 @@
                     {
                         httpResponseHeaders.Add(i.Key, i.Value);
                     });
-                    responseCookies = handle.CookieContainer.GetCookies(new Uri(uri));
-                    rCookies = SetCookieParser(setCookieValue, responseCookies, cookies);
                     if (!String.IsNullOrEmpty(htmlString))
                     {
                         dom = AngleSharp.DomParser.GetDomDocument(htmlString);
@@ -541,6 +651,8 @@
                         }
                         catch
                         { }
+                        responseCookies = handle.CookieContainer.GetCookies(new Uri(uri));
+                        rCookies = SetCookieParser(domain,setCookieValue, responseCookies, cookies);
                         res.Headers.ToList().ForEach((i) =>
                         {
                             httpResponseHeaders.Add(i.Key, i.Value);
@@ -617,6 +729,8 @@
                         }
                         catch
                         { }
+                        responseCookies = handle.CookieContainer.GetCookies(new Uri(uri));
+                        rCookies = SetCookieParser(domain,setCookieValue, responseCookies, cookies);
                         res.Headers.ToList().ForEach((i) =>
                         {
                             httpResponseHeaders.Add(i.Key, i.Value);
@@ -626,8 +740,6 @@
                             httpResponseHeaders.Add(i.Key, i.Value);
                         });
                     }
-                    responseCookies = handle.CookieContainer.GetCookies(new Uri(uri));
-                    rCookies = SetCookieParser(setCookieValue, responseCookies, cookies);
                     if (!String.IsNullOrEmpty(htmlString))
                     {
                         dom = AngleSharp.DomParser.GetDomDocument(htmlString);
@@ -664,6 +776,8 @@
                         }
                         catch
                         { }
+                        responseCookies = handle.CookieContainer.GetCookies(new Uri(uri));
+                        rCookies = SetCookieParser(domain,setCookieValue, responseCookies, cookies);
                         res.Headers.ToList().ForEach((i) =>
                         {
                             httpResponseHeaders.Add(i.Key, i.Value);
@@ -691,6 +805,8 @@
                         }
                         catch
                         { }
+                        responseCookies = handle.CookieContainer.GetCookies(new Uri(uri));
+                        rCookies = SetCookieParser(domain,setCookieValue, responseCookies, cookies);
                         res.Headers.ToList().ForEach((i) =>
                         {
                             httpResponseHeaders.Add(i.Key, i.Value);
@@ -700,8 +816,6 @@
                             httpResponseHeaders.Add(i.Key, i.Value);
                         });
                     }
-                    responseCookies = handle.CookieContainer.GetCookies(new Uri(uri));
-                    rCookies = SetCookieParser(setCookieValue, responseCookies, cookies);
                     if (!String.IsNullOrEmpty(htmlString))
                     {
                         dom = AngleSharp.DomParser.GetDomDocument(htmlString);
@@ -727,6 +841,8 @@
                     }
                     catch
                     { }
+                    responseCookies = handle.CookieContainer.GetCookies(new Uri(uri));
+                    rCookies = SetCookieParser(domain,setCookieValue, responseCookies, cookies);
                     res.Headers.ToList().ForEach((i) =>
                     {
                         httpResponseHeaders.Add(i.Key, i.Value);
@@ -735,8 +851,6 @@
                     {
                         httpResponseHeaders.Add(i.Key, i.Value);
                     });
-                    responseCookies = handle.CookieContainer.GetCookies(new Uri(uri));
-                    rCookies = SetCookieParser(setCookieValue, responseCookies, cookies);
                     if (!String.IsNullOrEmpty(htmlString))
                     {
                         dom = AngleSharp.DomParser.GetDomDocument(htmlString);
